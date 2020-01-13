@@ -13,6 +13,15 @@ services:
           - .:/home/wwwroot/sf4
         depends_on:
           - php
+          - rabbitmq
+
+    rabbitmq:
+        build: .docker/rabbitmq
+        container_name: sf4_rabbitmq
+        ports:
+          - 15672:15672
+        volumes:
+          - rabbitmq:/var/lib/rabbitmq:cached
 
     php:
         build: .docker/php
@@ -31,3 +40,6 @@ services:
         container_name: sf4_maildev
         ports:
           - 8001:80
+
+volumes:
+    rabbitmq:

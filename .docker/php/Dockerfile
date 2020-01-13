@@ -1,25 +1,29 @@
 FROM php:7.3-fpm
 
 RUN apt-get update -yqq \
-    && apt-get install -yqq --no-install-recommends vim curl debconf subversion git apt-transport-https apt-utils \
+    && apt-get install -yqq --no-install-recommends vim curl debconf git apt-transport-https apt-utils \
     build-essential locales acl mailutils wget zip unzip \
     gnupg gnupg1 gnupg2 \
     # install sshd
     openssh-server \
     # install ping and netcat (for debugging xdebug connectivity)
     iputils-ping netcat \
-    # fix ssh start up bug
-    # @see https://github.com/ansible/ansible-container/issues/141
-    && mkdir /var/run/sshd \
+    # RabbitMQ
+    librabbitmq-dev \
 ;
 
-RUN docker-php-ext-install mbstring \
-    && docker-php-ext-install mysqli \
-    && docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-install \
+    mbstring \
+    mysqli \
+    pdo pdo_mysql \
+;
 
 RUN apt -qy install $PHPIZE_DEPS \
     && pecl install xdebug-2.9.0 \
     && docker-php-ext-enable xdebug
+
+RUN pecl install amqp \
+    && docker-php-ext-enable amqp
 
 COPY php.ini /usr/local/etc/php/php.ini
 COPY php-fpm-pool.conf /usr/local/etc/php/pool.d/www.conf
