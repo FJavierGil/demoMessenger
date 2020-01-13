@@ -5,6 +5,9 @@
     "egulias/email-validator": {
         "version": "2.1.14"
     },
+    "monolog/monolog": {
+        "version": "1.25.3"
+    },
     "php": {
         "version": "7.3"
     },
@@ -118,6 +121,23 @@
     },
     "symfony/mime": {
         "version": "v4.4.2"
+    },
+    "symfony/monolog-bridge": {
+        "version": "v4.4.2"
+    },
+    "symfony/monolog-bundle": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "222b46a1bb02cd04bbc59700adec2f44f1a644b7"
+        },
+        "files": [
+            "config/packages/dev/monolog.yaml",
+            "config/packages/prod/monolog.yaml",
+            "config/packages/test/monolog.yaml"
+        ]
     },
     "symfony/polyfill-intl-idn": {
         "version": "v1.13.1"

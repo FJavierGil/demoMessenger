@@ -28,6 +28,7 @@ class NotificationHandler implements MessageHandlerInterface
             $this->mailer->send($email);
 
             echo 'Notification send to ' .  $user . PHP_EOL;
+            sleep(5);
         }
     }
 }

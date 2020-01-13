@@ -15,7 +15,8 @@ class DefaultController
     public function index(MessageBusInterface $bus, Request $request): Response
     {
         $users = ['foo@mail.com', 'bar@mail.com'];
-        $bus->dispatch(new Notification($request->get('message'), $users));
-        return new Response('Ok');
+        $txtMessage = $request->get('message') ?? 'default Message Subject';
+        $bus->dispatch(new Notification($txtMessage, $users));
+        return new Response('Notifications sent.');
     }
 }

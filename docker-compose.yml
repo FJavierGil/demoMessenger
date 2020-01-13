@@ -13,15 +13,6 @@ services:
           - .:/home/wwwroot/sf4
         depends_on:
           - php
-          - rabbitmq
-
-    rabbitmq:
-        build: .docker/rabbitmq
-        container_name: sf4_rabbitmq
-        ports:
-          - 15672:15672
-        volumes:
-          - rabbitmq:/var/lib/rabbitmq:cached
 
     php:
         build: .docker/php
@@ -30,8 +21,11 @@ services:
           - .:/home/wwwroot/sf4
         environment:
           - maildev_host=sf4_maildev
+          - MESSENGER_TRANSPORT_DSN=amqp://guest:guest@sf4_rabbitmq:5672/%2f/messages
+          - MAILER_URL=smtp://sf4_maildev:25
         depends_on:
           - maildev
+          - rabbitmq
         ports:
           - 9000:9000
 
@@ -40,6 +34,14 @@ services:
         container_name: sf4_maildev
         ports:
           - 8001:80
+
+    rabbitmq:
+      build: .docker/rabbitmq
+      container_name: sf4_rabbitmq
+      ports:
+        - 15672:15672
+      volumes:
+        - rabbitmq:/var/lib/rabbitmq:cached
 
 volumes:
     rabbitmq:
