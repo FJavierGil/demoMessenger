@@ -1,15 +1,14 @@
 <?php
 
-
 namespace App\Controller;
 
-
 use App\Message\Notification;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;
 
-class DefaultController
+class DefaultController extends AbstractController
 {
 
     public function index(MessageBusInterface $bus, Request $request): Response
@@ -17,6 +16,11 @@ class DefaultController
         $users = ['foo@mail.com', 'bar@mail.com'];
         $txtMessage = $request->get('message') ?? 'default Message Subject';
         $bus->dispatch(new Notification($txtMessage, $users));
-        return new Response('Notifications sent.');
+        return $this->render(
+            'default/index.html.twig',
+            [
+                'msg' => 'Notifications sent.',
+            ]
+        );
     }
 }
