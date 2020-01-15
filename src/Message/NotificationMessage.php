@@ -4,8 +4,7 @@
 
 namespace App\Message;
 
-
-class Notification
+class NotificationMessage
 {
     /** @var string $message */
     private $message;
@@ -29,9 +28,9 @@ class Notification
 
     /**
      * @param string $message
-     * @return Notification
+     * @return NotificationMessage
      */
-    public function setMessage(string $message): Notification
+    public function setMessage(string $message): NotificationMessage
     {
         $this->message = $message;
         return $this;
@@ -47,9 +46,9 @@ class Notification
 
     /**
      * @param array $users
-     * @return Notification
+     * @return NotificationMessage
      */
-    public function setUsers(array $users): Notification
+    public function setUsers(array $users): NotificationMessage
     {
         $this->users = $users;
         return $this;

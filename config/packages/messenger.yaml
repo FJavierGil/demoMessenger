@@ -8,9 +8,15 @@ framework:
             # async: '%env(MESSENGER_TRANSPORT_DSN)%'
             # failed: 'doctrine://default?queue_name=failed'
             # sync: 'sync://'
-            amqp: '%env(MESSENGER_TRANSPORT_DSN)%'
+            amqp:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+                options:
+                    exchange:
+                        name: high
+                    queues:
+                        messages_high: ~
 
         routing:
             # Route your messages to the transports
             # 'App\Message\YourMessage': async
-            'App\Message\Notification': amqp
+            App\Message\NotificationMessage: amqp
