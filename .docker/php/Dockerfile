@@ -2,7 +2,7 @@ FROM php:7.3-fpm
 
 RUN apt-get update -yqq \
     && apt-get install -yqq --no-install-recommends vim curl debconf git apt-transport-https apt-utils \
-    build-essential locales acl mailutils wget zip unzip \
+    net-tools build-essential locales acl mailutils wget zip unzip \
     gnupg gnupg1 gnupg2 \
     # install sshd
     openssh-server \
@@ -19,7 +19,7 @@ RUN docker-php-ext-install \
 ;
 
 RUN apt -qy install $PHPIZE_DEPS \
-    && pecl install xdebug-2.9.0 \
+    && pecl install xdebug-2.9.1 \
     && docker-php-ext-enable xdebug
 
 RUN pecl install amqp \
@@ -45,5 +45,5 @@ RUN echo "dev ALL=(ALL) ALL" > /etc/sudoers
 
 WORKDIR /home/wwwroot/
 
-EXPOSE 9000
+EXPOSE 9009
 CMD ["php-fpm"]

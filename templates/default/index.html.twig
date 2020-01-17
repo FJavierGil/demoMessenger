@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div><p>{{ msg }}</p></div>
+    <div><h1>{{ msg }}</h1></div>
+    <p><img src="http://localhost:15672/img/rabbitmqlogo.png">RabbitMQ
+        <a href="http://localhost:15672/" target="_blank">web manager</a>
+    </p>
+    <p>Pulsa <a href="{{ path('workers') }}" target="_blank">aquí</a> para lanzar los workers</p>
 {% endblock %}

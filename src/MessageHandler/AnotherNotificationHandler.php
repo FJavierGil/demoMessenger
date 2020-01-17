@@ -11,7 +11,7 @@ class AnotherNotificationHandler implements MessageHandlerInterface
     public function __invoke(NotificationMessage $message)
     {
         foreach ($message->getUsers() as $user) {
-            sleep(4);
+            sleep(1);
             echo 'Another Notification send to ' .  $user . PHP_EOL;
         }
     }

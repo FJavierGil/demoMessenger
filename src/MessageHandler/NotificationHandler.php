@@ -11,7 +11,7 @@ class NotificationHandler implements MessageHandlerInterface
     public function __invoke(NotificationMessage $message)
     {
         foreach ($message->getUsers() as $user) {
-            sleep(10);
+            sleep(3);
             echo 'Notification send to ' .  $user . PHP_EOL;
         }
     }
