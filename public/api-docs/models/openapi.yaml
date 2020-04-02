@@ -5,30 +5,18 @@ info:
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
-  version: 1.0.0
+  version: 1.0.1
   contact:
     name: AOS - Arquitecturas Orientadas a Servicios - UPM
-    url: http://www.etsisi.upm.es/
-    # email: miw@etsisi.upm.es
+    url: http://miw.etsisi.upm.es/
+    email: miw.etsisi@upm.es
 servers:
-  -
-    url: '{schema}://{servername}:{port}/api/v1/'
+  - url: 'http://localhost/api/v1/'
     description: 'AOS Production server'
-    variables:
-      schema:
-        enum:
-          - http
-          - https
-        default: http
-      servername:
-        default: localhost
-      port:
-        default: '80'
 paths:
   /NotificationMessages:
     post:
-      tags:
-        - NotificationMessages
+      tags: [ NotificationMessages ]
       summary: Creates a new message
       description: 'Create a new notification message and send it to the queue'
       operationId: api_messenger_producer
@@ -54,10 +42,9 @@ paths:
                 $ref: '#/components/schemas/Message'
               example:
                 code: 422
-                message: '`Unprocessable entity`: textMessage or users is left out'
+                message: 'Unprocessable entity: textMessage or users is left out'
     get:
-      tags:
-        - NotificationMessages
+      tags: [ NotificationMessages ]
       summary: Consume one message
       description: 'Consume one message.'
       operationId: api_messenger_consumer
@@ -116,9 +103,6 @@ components:
           description: 'Response message'
           type: string
       type: object
-      example:
-        code: 200
-        message: Ok
 tags:
   - name: NotificationMessages
     description: 'Notification Message management'

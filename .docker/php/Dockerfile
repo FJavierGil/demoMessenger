@@ -1,11 +1,11 @@
-FROM php:7.3-fpm
+FROM php:7.4-fpm
 
 RUN apt-get update -yqq \
     && apt-get install -yqq --no-install-recommends vim curl debconf git apt-transport-https apt-utils \
     net-tools build-essential locales acl mailutils wget zip unzip \
-    gnupg gnupg1 gnupg2 \
+    # gnupg gnupg1 gnupg2 \
     # install sshd
-    openssh-server \
+    # openssh-server \
     # install ping and netcat (for debugging xdebug connectivity)
     iputils-ping netcat \
     # RabbitMQ
@@ -13,13 +13,13 @@ RUN apt-get update -yqq \
 ;
 
 RUN docker-php-ext-install \
-    mbstring \
+    # mbstring \
     mysqli \
     pdo pdo_mysql \
 ;
 
 RUN apt -qy install $PHPIZE_DEPS \
-    && pecl install xdebug-2.9.1 \
+    && pecl install xdebug-2.9.4 \
     && docker-php-ext-enable xdebug
 
 RUN pecl install amqp \
@@ -45,5 +45,5 @@ RUN echo "dev ALL=(ALL) ALL" > /etc/sudoers
 
 WORKDIR /home/wwwroot/
 
-EXPOSE 9009
+EXPOSE 9000 9009
 CMD ["php-fpm"]
