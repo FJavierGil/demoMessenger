@@ -1,0 +1,39 @@
+@startuml
+skinparam componentStyle uml2
+skinparam sequenceArrowThickness 2
+
+skinparam interface {
+  borderColor orange
+
+}
+
+header Servicios asíncronos con RabbittMQ
+
+frame "Producer" {
+  component "Productor\nde mensajes" as producer #5B9BD5
+}
+
+frame "Consumer" {
+  component "Consumidor\nde mensajes" as consumer #5B9BD5
+}
+note right
+consume los
+mensajes
+bajo demanda
+end note
+
+frame "broker RabbittMQ <&cloud>" {
+  component cola #efa97a [
+    Cola de mensajes
+    //(messages_high)//
+  ]
+  interface Exchange
+
+  producer --up-> Exchange: AMQP <&envelope-closed>
+  Exchange -right-> cola: binding
+
+  cola ..down.> consumer: AMQP <&envelope-open>
+  consumer --up-> cola
+}
+
+@enduml
