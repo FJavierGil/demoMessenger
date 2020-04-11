@@ -12,7 +12,7 @@ class AnotherNotificationHandler implements MessageHandlerInterface
     {
         foreach ($message->getUsers() as $user) {
             sleep(1);
-            echo 'Another Notification send to ' .  $user . PHP_EOL;
+            echo 'Handler2: Notification send to ' .  $user . PHP_EOL;
         }
     }
 }

@@ -14,7 +14,7 @@ una interfaz que permite realizar dos sencillas operaciones:
 
 En el ejemplo, cada notificación (en formato JSON) contiene un texto y una lista de direcciones de
 correo electrónico similar a:
-```
+```json
 {
   "textMessage": "Message text",
   "users": [
@@ -23,13 +23,15 @@ correo electrónico similar a:
   ]
 }
 ```
-![img](https://www.rabbitmq.com/img/tutorials/python-one-overall.png)
+&nbsp;
+
+![img](./public/img/imagen1.png)
 ### Operación enviar notificación _(productor)_
 La operación de envío de notificaciones actúa como **productor**: construye un mensaje que contiene la
 notificación y lo entrega al intermediario, es decir, lo envía a la cola de mensajes. El mensaje permanecerá
 en la cola en espera de ser consumido por algún servicio.
 
-![img](https://www.rabbitmq.com/img/tutorials/sending.png)
+![img](./public/img/imagen2.png)
 
 En este ejemplo la cola se ha denominado `messages_high`. 
 
@@ -38,7 +40,7 @@ La operación _consumir notificación_ actúa como **consumidor**: se conecta al
 y, si hay algún mensaje, lo recoge. En este ejemplo, cuando se procesa un mensaje se simula el
 envío de un texto a la lista de destinatarios de la notificación.
 
-![img](https://www.rabbitmq.com/img/tutorials/receiving.png)
+![img](./public/img/imagen3.png)
 
 Para simplificar el ejemplo, tanto productor como consumidor residen en el
 mismo servicio, pero perfectamente podrían ser servicios completamente independientes.
@@ -54,17 +56,17 @@ de esta fenomenal herramienta que permite realizar pruebas interactivas de maner
 Para desplegar el proyecto empleando Docker, basta con ejecutar los siguientes comandos 
 desde el directorio raíz del proyecto:
 
-```
-$ docker-compose up -d
-$ docker exec -u dev -it aos_php bash
-$ cd ./aos
-$ composer install
+```bash
+$> docker-compose up -d
+$> docker exec -u dev -it aos_php bash
+:/home/wwwroot$> cd ./aos
+:/home/wwwroot/aos$> composer install
 ```
 
 La ejecución de estos tres últimos comandos sólo es necesaria la primera vez que se realiza el despliegue.
 
 Una vez desplegado el proyecto, se podrá acceder a la interfaz de usuario de la especificación 
-a través de [http://localhost/][lh]. Además, también se podrá acceder a la herramienta
+a través de [http://localhost:80/api-docs/index.html][lh]. Además, también se podrá acceder a la herramienta
 RabbitMQ Management en [http://localhost:15672/][rmq]. Por otra parte, para acceder a los
 detalles internos de la aplicación se puede acceder a la dirección [http://localhost/_profiler][profiler].
 
@@ -79,20 +81,20 @@ detalles de la misma en tiempo real (la interfaz se actualiza por defecto cada 5
 Aparte de utilizar la interfaz de la api, también es posible consumir los mensajes a través
 de la consola de comandos (con mayor nivel de detalle). Para ello se deberán ejecutar los
 siguientes comandos:
-```
-$ docker exec -it -u dev aos_php bash
-$ cd ./aos
-$ bin/console -vvv --limit=1 messenger:consume
+```bash
+$> docker exec -it -u dev aos_php bash
+:/home/wwwroot$> cd ./aos
+:/home/wwwroot/aos$> bin/console -vvv --limit=1 messenger:consume
 ```
 
 ### Deteniendo los servicios
 
 Finalmente, para detener la ejecución de los servicios se ejecutará el comando:
 ```
-$ docker-compose stop
+$> docker-compose stop
 ```
 
-[lh]: https://localhost:80/api-docs/index.html
+[lh]: http://localhost:80/api-docs/index.html
 [openapi]: https://www.openapis.org/
 [profiler]: http://localhost/_profiler
 [swagger]: http://swagger.io/
