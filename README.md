@@ -1,4 +1,4 @@
-![logo UPM](https://raw.githubusercontent.com/laracabrera/AOS/master/tarea1/logo_upm.jpg) AOS - Ejemplo de servicios asíncronos
+![logo UPM](https://raw.githubusercontent.com/laracabrera/AOS/master/tarea1/logo_upm.jpg) AOS: Ejemplo de servicios asíncronos
 ======================================
 
 [![Minimum PHP Version](https://img.shields.io/badge/php-%5E7.4-blue.svg)](http://php.net/)
@@ -6,9 +6,9 @@
 > Ejemplo de servicio asíncrono basado en mensajes _(con el gestor RabbitMQ)_
 
 En este ejemplo se implementan dos servicios asíncronos que se comunican a través de un gestor de colas de mensajes.
-El gestor de mensajes (_message broker_) empleado es [RabbitMQ][rabbitmq], que es un sistema de negociación
+El gestor de mensajes (_message broker_) empleado es [RabbitMQ][rabbitmq], que proporciona un sistema de negociación
 de mensajes de código abierto. Por su parte, los servicios utilizan el protocolo [AMQP][amqp] para conectarse con 
-el gestor de mensajes, y además proporcionan una interfaz para poder realizar dos sencillas operaciones:
+el gestor de mensajes, y además ofrecen una interfaz para poder realizar dos sencillas operaciones:
 - Enviar una notificación a la cola
 - Consumir una notificación de la cola
 
@@ -59,17 +59,17 @@ de esta fenomenal herramienta que permite realizar pruebas interactivas de maner
 Para desplegar el proyecto empleando Docker, basta con ejecutar los siguientes comandos 
 desde el directorio raíz del proyecto:
 
-```bash
-$> docker-compose up -d
-$> docker exec -u dev -it php_fpm bash
+```
+> docker-compose up -d
+> docker exec -u dev -it php_fpm bash
 :/home/wwwroot$> cd ./aos
 :/home/wwwroot/aos$> composer install
 ```
 
 La ejecución de los tres últimos comandos sólo es necesaria la primera vez que se realiza el despliegue.
 Desde la consola del sistema anfitrión se pueden observar los contenedores desplegados empleando:
-```bash
-$> docker container ps --format "{{.Names}}: Ports [{{.Ports}}]"
+```
+> docker ps --format "{{.Names}}: Ports [{{.Ports}}]"
 ``` 
 
 Una vez desplegado el proyecto, se podrá acceder a la interfaz de usuario de la especificación 
@@ -87,8 +87,8 @@ detalles de la misma en tiempo real (la interfaz se actualiza automáticamente p
 Aparte de utilizar la interfaz de la api, también es posible consumir los mensajes a través
 de la consola de comandos (con mayor nivel de detalle). Para ello se deberán ejecutar los
 siguientes comandos:
-```bash
-$> docker exec -it -u dev php_fpm bash
+```
+> docker exec -it -u dev php_fpm bash
 :/home/wwwroot$> cd ./aos
 :/home/wwwroot/aos$> bin/console -vvv --limit=1 messenger:consume
 ```
@@ -101,7 +101,7 @@ Como curiosidad, si se desea acceder a los detalles internos del funcionamiento 
 
 Finalmente, para detener la ejecución de los contenedores desde el anfitrión se ejecutará el comando:
 ```
-$> docker-compose stop
+> docker-compose stop
 ```
 
 [lh]: http://localhost:8000/api-docs/index.html

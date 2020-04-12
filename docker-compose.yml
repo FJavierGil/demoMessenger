@@ -9,7 +9,7 @@ services:
         ports:
           - 8000:80
         volumes:
-          - .docker/config/vhosts:/etc/apache2/sites-enabled
+          - .docker/config/vhosts:/etc/apache2/sites-enabled:ro
           - .:/home/wwwroot/aos
         depends_on:
           - php
@@ -22,7 +22,7 @@ services:
         ports:
             - 8080:80
         volumes:
-            - .docker/config/vhosts:/etc/apache2/sites-enabled
+            - .docker/config/vhosts:/etc/apache2/sites-enabled:ro
             - .:/home/wwwroot/aos
         depends_on:
             - php
@@ -32,15 +32,17 @@ services:
           dockerfile: Dockerfile
         container_name: php_fpm
         volumes:
-          - .:/home/wwwroot/aos
+          - .:/home/wwwroot/aos:rw
         environment:
           - MESSENGER_TRANSPORT_DSN=amqp://guest:guest@broker_rabbitmq:5672/%2f/messages
+          - EXCHANGE_NAME=high
+          - QUEUE_NAME=messages_high
         depends_on:
           - rabbitmq
         ports:
           - 9000:9000
 
-    rabbitmq:   # The RabbitMQ container.
+    rabbitmq:
         build:
           context: .
           dockerfile: .docker/rabbitmq/Dockerfile

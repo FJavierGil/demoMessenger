@@ -1,4 +1,4 @@
-FROM php:7.4.4-fpm
+FROM php:7.4-fpm
 
 RUN apt-get update -yqq \
     && apt-get install -yqq --no-install-recommends vim curl debconf git apt-transport-https apt-utils \
@@ -18,9 +18,9 @@ RUN apt-get update -yqq \
 #    pdo pdo_mysql \
 #;
 
-#RUN apt -qy install $PHPIZE_DEPS \
-#    && pecl install xdebug-2.9.4 \
-#    && docker-php-ext-enable xdebug
+RUN apt -qy install $PHPIZE_DEPS \
+    && pecl install xdebug-2.9.5 \
+    && docker-php-ext-enable xdebug
 
 RUN pecl install amqp \
     && docker-php-ext-enable amqp

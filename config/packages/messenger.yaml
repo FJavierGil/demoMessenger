@@ -12,9 +12,9 @@ framework:
                 dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
                 options:
                     exchange:
-                        name: high
+                        name: '%env(EXCHANGE_NAME)%'
                     queues:
-                        messages_high: ~
+                        '%env(QUEUE_NAME)%': ~
 
         routing:
             # Route your messages to the transports
