@@ -4,23 +4,22 @@ skinparam sequenceArrowThickness 2
 
 skinparam interface {
   borderColor orange
-
 }
 
 header Servicios asíncronos con RabbittMQ
 
-frame "Producer" {
+frame "Producer   <&envelope-closed>" {
   component "Productor\nde mensajes" as producer #5B9BD5
 }
 
-frame "Consumer" {
+frame "Consumer   <&envelope-open>" {
   component "Consumidor\nde mensajes" as consumer #5B9BD5
 }
-note right
-consume los
-mensajes
-bajo demanda
-end note
+'note right
+'consume los
+'mensajes
+'bajo demanda
+'end note
 
 frame "broker RabbittMQ <&cloud>" {
   component cola #efa97a [
@@ -28,11 +27,14 @@ frame "broker RabbittMQ <&cloud>" {
     //(messages_high)//
   ]
   interface Exchange
+'  note left
+'    high
+'  end note
 
-  producer --up-> Exchange: AMQP <&envelope-closed>
+  producer --up-> Exchange: AMQP
   Exchange -right-> cola: binding
 
-  cola ..down.> consumer: AMQP <&envelope-open>
+  cola ..down.> consumer: AMQP
   consumer --up-> cola
 }
 

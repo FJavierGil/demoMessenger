@@ -1,28 +1,40 @@
 version: '3'
 
 services:
-    apache:
+    producer:
         build:
           context: .
           dockerfile: .docker/apache/Dockerfile
-        container_name: aos_apache
+        container_name: producer
         ports:
-          - 80:80
+          - 8000:80
         volumes:
           - .docker/config/vhosts:/etc/apache2/sites-enabled
           - .:/home/wwwroot/aos
         depends_on:
           - php
 
+    consumer:
+        build:
+            context: .
+            dockerfile: .docker/apache/Dockerfile
+        container_name: consumer
+        ports:
+            - 8080:80
+        volumes:
+            - .docker/config/vhosts:/etc/apache2/sites-enabled
+            - .:/home/wwwroot/aos
+        depends_on:
+            - php
     php:
         build:
           context: .docker/php
           dockerfile: Dockerfile
-        container_name: aos_php
+        container_name: php_fpm
         volumes:
           - .:/home/wwwroot/aos
         environment:
-          - MESSENGER_TRANSPORT_DSN=amqp://guest:guest@aos_rabbitmq:5672/%2f/messages
+          - MESSENGER_TRANSPORT_DSN=amqp://guest:guest@broker_rabbitmq:5672/%2f/messages
         depends_on:
           - rabbitmq
         ports:
@@ -32,7 +44,7 @@ services:
         build:
           context: .
           dockerfile: .docker/rabbitmq/Dockerfile
-        container_name: aos_rabbitmq
+        container_name: broker_rabbitmq
         ports:
           - 15672:15672
         volumes:

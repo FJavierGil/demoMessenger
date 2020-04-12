@@ -11,7 +11,7 @@ info:
     url: http://miw.etsisi.upm.es/
     email: miw.etsisi@upm.es
 servers:
-  - url: 'http://localhost/api/v1/'
+  - url: 'http://localhost:8000/api/v1/'
     description: 'AOS Production server'
 paths:
   /NotificationMessages:
@@ -48,6 +48,8 @@ paths:
       summary: Consume one message
       description: 'Consume one message.'
       operationId: api_messenger_consumer
+      servers:
+        - url: 'http://localhost:8080/api/v1/'
       responses:
         '200':
           description: 'Console ouput'

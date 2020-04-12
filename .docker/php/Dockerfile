@@ -7,20 +7,20 @@ RUN apt-get update -yqq \
     # install sshd
     # openssh-server \
     # install ping and netcat (for debugging xdebug connectivity)
-    iputils-ping netcat \
+    # iputils-ping netcat \
     # RabbitMQ
     librabbitmq-dev \
 ;
 
-RUN docker-php-ext-install \
-    # mbstring \
-    mysqli \
-    pdo pdo_mysql \
-;
+#RUN docker-php-ext-install \
+#    # mbstring \
+#    mysqli \
+#    pdo pdo_mysql \
+#;
 
-RUN apt -qy install $PHPIZE_DEPS \
-    && pecl install xdebug-2.9.4 \
-    && docker-php-ext-enable xdebug
+#RUN apt -qy install $PHPIZE_DEPS \
+#    && pecl install xdebug-2.9.4 \
+#    && docker-php-ext-enable xdebug
 
 RUN pecl install amqp \
     && docker-php-ext-enable amqp
@@ -45,5 +45,5 @@ RUN echo "dev ALL=(ALL) ALL" > /etc/sudoers
 
 WORKDIR /home/wwwroot/
 
-EXPOSE 9000 9009
+EXPOSE 9000
 CMD ["php-fpm"]
