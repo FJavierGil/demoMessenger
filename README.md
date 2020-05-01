@@ -36,11 +36,11 @@ en la cola en espera de ser consumido por algún servicio.
 En el ejemplo la cola se ha denominado `messages_high`. Dentro de RabbittMQ, cuando un productor desea
 encolar un nuevo mensaje, lo que hace es enviarlo a un intercambiador (_exchange_), que se
 comporta como agente de enrutamiento. Este intercambiador (`high` en el ejemplo) es el responsable
-del envío de los mensajes a las diferentes colas. 
+del envío de los mensajes a las diferentes colas de acuerdo a sus reglas internas. 
 
 ### Servicio para consumir una notificación _(consumidor, puerto 8080)_
 El servicio _consumir notificación_ actúa como **consumidor**: se conecta al gestor de mensajes, 
-y, si hay algún mensaje, lo recoge. En este ejemplo, cuando se procesa un mensaje se simula el
+y, si hay algún mensaje en la cola, lo recoge. En este ejemplo, cuando se procesa un mensaje se simula el
 envío de un texto a la lista de destinatarios de la notificación.
 
 ![img](./public/img/imagen3.png)

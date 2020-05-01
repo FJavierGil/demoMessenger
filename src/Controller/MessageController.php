@@ -120,7 +120,10 @@ class MessageController extends AbstractController
         return new JsonResponse(
             null,
             Response::HTTP_OK,
-            [ 'Allow' => 'GET, POST' ]
+            [
+                'Access-Control-Allow-Methods' => 'OPTIONS',
+                'Allow' => 'GET, OPTIONS, POST',
+            ]
         );
     }
 
