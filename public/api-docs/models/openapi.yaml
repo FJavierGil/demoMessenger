@@ -5,14 +5,20 @@ info:
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
-  version: 1.0.1
+  version: 1.0.2
   contact:
     name: AOS - Arquitecturas Orientadas a Servicios - UPM
     url: http://miw.etsisi.upm.es/
     email: miw.etsisi@upm.es
+
 servers:
   - url: 'http://localhost:8000/api/v1/'
     description: 'AOS Production server'
+
+tags:
+  - name: NotificationMessages
+    description: 'Notification Message management'
+
 paths:
   /NotificationMessages:
     post:
@@ -43,6 +49,7 @@ paths:
               example:
                 code: 422
                 message: 'Unprocessable entity: textMessage or users is left out'
+
     get:
       tags: [ NotificationMessages ]
       summary: Consume one message
@@ -58,6 +65,7 @@ paths:
               schema:
                 type: string
               example: '<console output>'
+
     options:
       tags:
         - NotificationMessages
@@ -65,7 +73,7 @@ paths:
       description: 'Return a `Allow` header with a comma separated list of HTTP supported methods.'
       operationId: api_messenger_options
       responses:
-        '200':
+        '204':
           description: '`Allow` header &lt;Response body is empty&gt;'
           headers:
             Allow:
@@ -75,6 +83,7 @@ paths:
 components:
   schemas:
     NotificationMessage:
+      type: object
       required:
         - textMessage
         - users
@@ -88,14 +97,11 @@ components:
             type: string
             format: email
           minItems: 1
-      type: object
       example:
         textMessage: 'Message text'
         users: [ 'foo@example.com', 'bar@example.com' ]
     Message:
-      required:
-        - code
-        - message
+      type: object
       properties:
         code:
           description: 'Response code'
@@ -104,7 +110,3 @@ components:
         message:
           description: 'Response message'
           type: string
-      type: object
-tags:
-  - name: NotificationMessages
-    description: 'Notification Message management'
