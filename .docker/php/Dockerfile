@@ -18,8 +18,13 @@ RUN apt-get update -yqq \
 #    pdo pdo_mysql \
 #;
 
+RUN apt-get -y update \
+    && apt-get install -y libicu-dev \
+    && docker-php-ext-configure intl \
+    && docker-php-ext-install intl
+
 RUN apt -qy install $PHPIZE_DEPS \
-    && pecl install xdebug-2.9.5 \
+    && pecl install xdebug-2.9.8 \
     && docker-php-ext-enable xdebug
 
 RUN pecl install amqp \

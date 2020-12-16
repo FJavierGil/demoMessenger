@@ -25,25 +25,25 @@ correo electrónico similar a:
 ```
 &nbsp;
 
-![img](./public/img/imagen1.png)
-### Servicio para el envío de notificaciones _(productor, puerto 8000)_
+![img](public/img/imagen1.png)
+### Servicio de envío de notificaciones _(productor, puerto 8000)_
 El servicio de envío de notificaciones actúa como **productor**: construye un mensaje que contiene la
 notificación y lo entrega al intermediario, es decir, lo envía a la cola de mensajes. El mensaje permanecerá
-en la cola en espera de ser consumido por algún servicio.
+en la cola a la espera de ser consumido por algún servicio.
 
-![img](./public/img/imagen2.png)
+![img](public/img/imagen2.png)
 
 En el ejemplo la cola se ha denominado `messages_high`. Dentro de RabbittMQ, cuando un productor desea
 encolar un nuevo mensaje, lo que hace es enviarlo a un intercambiador (_exchange_), que se
 comporta como agente de enrutamiento. Este intercambiador (`high` en el ejemplo) es el responsable
 del envío de los mensajes a las diferentes colas de acuerdo a sus reglas internas. 
 
-### Servicio para consumir una notificación _(consumidor, puerto 8080)_
+### Servicio consumidor de notificaciones _(consumidor, puerto 8080)_
 El servicio _consumir notificación_ actúa como **consumidor**: se conecta al gestor de mensajes, 
 y, si hay algún mensaje en la cola, lo recoge. En este ejemplo, cuando se procesa un mensaje se simula el
 envío de un texto a la lista de destinatarios de la notificación.
 
-![img](./public/img/imagen3.png)
+![img](public/img/imagen3.png)
 
 En esta implementación, tanto productor como consumidor utilizan un cuarto servicio
 (denominado _php_fpm_) que proporciona el intérprete FPM (FastCGI Process Manager) de PHP.
@@ -62,8 +62,8 @@ desde el directorio raíz del proyecto:
 ```
 > docker-compose up -d
 > docker exec -u dev -it php_fpm bash
-:/home/wwwroot$> cd ./aos
-:/home/wwwroot/aos$> composer install
+:/home/wwwroot$ cd ./aos
+:/home/wwwroot/aos$ composer update
 ```
 
 La ejecución de los tres últimos comandos sólo es necesaria la primera vez que se realiza el despliegue.
@@ -79,7 +79,7 @@ RabbitMQ Management en [http://localhost:15672/][rmq] (usuario _guest_ y passwor
 ### Accediendo a la cola
 
 La cola de mensajes se crea en el momento en que se recibe el primer mensaje. El
-estado de las diferentes colas en el _broker_ puede observarse a través de la dirección
+estado de las diferentes colas en el _broker_ se puede observar a través de la dirección
 [http://localhost:15672/#/queues](http://localhost:15672/#/queues). Si se ha enviado algún
 mensaje aparecerá una cola (denominada `messages_high`), y se pueden examinar todos los
 detalles de la misma en tiempo real (la interfaz se actualiza automáticamente por defecto cada 5 segundos).
@@ -89,14 +89,14 @@ de la consola de comandos (con mayor nivel de detalle). Para ello se deberán ej
 siguientes comandos:
 ```
 > docker exec -it -u dev php_fpm bash
-:/home/wwwroot$> cd ./aos
-:/home/wwwroot/aos$> bin/console -vvv --limit=1 messenger:consume
+:/home/wwwroot$ cd ./aos
+:/home/wwwroot/aos$ bin/console -vvv --limit=1 messenger:consume
 ```
 
 ### Deteniendo los servicios
 
 Como curiosidad, si se desea acceder a los detalles internos del funcionamiento de la aplicación
-(implementada sobre el framework [Symfony][sf]) se puede acceder a la dirección
+(implementada sobre el framework PHP [Symfony][sf]) se puede acceder a la dirección
 [http://localhost:8000/_profiler][profiler].
 
 Finalmente, para detener la ejecución de los contenedores desde el anfitrión se ejecutará el comando:
