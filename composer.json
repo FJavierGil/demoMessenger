@@ -4,7 +4,7 @@
     "type": "project",
     "license": "MIT",
     "homepage": "http://miw.etsisi.upm.es/",
-    "keywords": ["Symfony5", "amqp", "RabbitMQ", "messenger"],
+    "keywords": ["Symfony5", "amqp", "RabbitMQ", "symfony-messenger", "OpenAPI"],
     "authors": [
         {
             "name": "AOS UPM",

@@ -42,16 +42,16 @@
         ]
     },
     "symfony/amqp-messenger": {
-        "version": "v5.1.9"
+        "version": "v5.1.10"
     },
     "symfony/cache": {
-        "version": "v5.1.9"
+        "version": "v5.1.10"
     },
     "symfony/cache-contracts": {
         "version": "v2.2.0"
     },
     "symfony/config": {
-        "version": "v5.1.9"
+        "version": "v5.1.10"
     },
     "symfony/console": {
         "version": "5.1",
@@ -66,31 +66,31 @@
         ]
     },
     "symfony/dependency-injection": {
-        "version": "v5.1.9"
+        "version": "v5.1.10"
     },
     "symfony/deprecation-contracts": {
         "version": "v2.2.0"
     },
     "symfony/doctrine-messenger": {
-        "version": "v5.1.9"
+        "version": "v5.1.10"
     },
     "symfony/dotenv": {
-        "version": "v5.1.9"
+        "version": "v5.1.10"
     },
     "symfony/error-handler": {
-        "version": "v5.1.9"
+        "version": "v5.1.10"
     },
     "symfony/event-dispatcher": {
-        "version": "v5.1.9"
+        "version": "v5.1.10"
     },
     "symfony/event-dispatcher-contracts": {
         "version": "v2.2.0"
     },
     "symfony/filesystem": {
-        "version": "v5.1.9"
+        "version": "v5.1.10"
     },
     "symfony/finder": {
-        "version": "v5.1.9"
+        "version": "v5.1.10"
     },
     "symfony/flex": {
         "version": "1.0",
@@ -128,10 +128,10 @@
         "version": "v2.3.1"
     },
     "symfony/http-foundation": {
-        "version": "v5.1.9"
+        "version": "v5.1.10"
     },
     "symfony/http-kernel": {
-        "version": "v5.1.9"
+        "version": "v5.1.10"
     },
     "symfony/messenger": {
         "version": "4.3",
@@ -146,7 +146,7 @@
         ]
     },
     "symfony/monolog-bridge": {
-        "version": "v5.1.9"
+        "version": "v5.1.10"
     },
     "symfony/monolog-bundle": {
         "version": "3.3",
@@ -182,7 +182,7 @@
         "version": "v1.0.5"
     },
     "symfony/redis-messenger": {
-        "version": "v5.1.9"
+        "version": "v5.1.10"
     },
     "symfony/routing": {
         "version": "5.1",
@@ -202,16 +202,16 @@
         "version": "v2.2.0"
     },
     "symfony/stopwatch": {
-        "version": "v5.1.9"
+        "version": "v5.1.10"
     },
     "symfony/string": {
-        "version": "v5.1.9"
+        "version": "v5.1.10"
     },
     "symfony/translation-contracts": {
         "version": "v2.3.0"
     },
     "symfony/twig-bridge": {
-        "version": "v5.1.9"
+        "version": "v5.1.10"
     },
     "symfony/twig-bundle": {
         "version": "5.0",
@@ -228,10 +228,10 @@
         ]
     },
     "symfony/var-dumper": {
-        "version": "v5.1.9"
+        "version": "v5.1.10"
     },
     "symfony/var-exporter": {
-        "version": "v5.1.9"
+        "version": "v5.1.10"
     },
     "symfony/web-profiler-bundle": {
         "version": "3.3",
@@ -248,7 +248,7 @@
         ]
     },
     "symfony/yaml": {
-        "version": "v5.1.9"
+        "version": "v5.1.10"
     },
     "twig/twig": {
         "version": "v3.1.1"
