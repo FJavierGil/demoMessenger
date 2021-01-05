@@ -67,7 +67,7 @@ desde el directorio raíz del proyecto:
 ```
 
 La ejecución de los tres últimos comandos sólo es necesaria la primera vez que se realiza el despliegue.
-Desde la consola del sistema anfitrión se pueden observar los contenedores desplegados empleando:
+Desde la consola del sistema anfitrión se puede ver la lista de los contenedores desplegados empleando:
 ```
 > docker ps --format "{{.Names}}: Ports [{{.Ports}}]"
 ``` 

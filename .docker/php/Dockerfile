@@ -12,19 +12,13 @@ RUN apt-get update -yqq \
     librabbitmq-dev \
 ;
 
-#RUN docker-php-ext-install \
-#    # mbstring \
-#    mysqli \
-#    pdo pdo_mysql \
-#;
-
 RUN apt-get -y update \
     && apt-get install -y libicu-dev \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl
 
 RUN apt -qy install $PHPIZE_DEPS \
-    && pecl install xdebug-3.0.1 \
+    && pecl install xdebug-3.0.2 \
     && docker-php-ext-enable xdebug
 
 RUN pecl install amqp \
