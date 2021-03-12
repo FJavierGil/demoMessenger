@@ -18,7 +18,7 @@ RUN apt-get -y update \
     && docker-php-ext-install intl
 
 RUN apt -qy install $PHPIZE_DEPS \
-    && pecl install xdebug-3.0.2 \
+    && pecl install xdebug-3.0.3 \
     && docker-php-ext-enable xdebug
 
 RUN pecl install amqp \
@@ -27,13 +27,15 @@ RUN pecl install amqp \
 COPY php.ini /usr/local/etc/php/php.ini
 COPY php-fpm-pool.conf /usr/local/etc/php/pool.d/www.conf
 COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+COPY entrypoint.sh /entrypoint.sh
 
 RUN curl -sSk https://getcomposer.org/installer | php -- --disable-tls && \
-   mv composer.phar /usr/local/bin/composer
+   mv composer.phar /usr/local/bin/composer && chmod +x /usr/local/bin/composer
 
 RUN groupadd dev -g 999
 RUN useradd dev -g dev -d /home/dev -m
 RUN passwd -d dev
+RUN chmod +x /entrypoint.sh
 
 RUN rm -rf /var/lib/apt/lists/*
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
@@ -46,3 +48,5 @@ WORKDIR /home/wwwroot/
 
 EXPOSE 9000
 CMD ["php-fpm"]
+
+ENTRYPOINT ["/entrypoint.sh"]

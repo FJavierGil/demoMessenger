@@ -1,11 +1,11 @@
-openapi: 3.0.2
+openapi: 3.0.3
 info:
   title: AOS - Messenger - REST api
   description: '[UPM] AOS - Messenger - REST api operations'
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
-  version: 1.0.2
+  version: 1.1.2
   contact:
     name: AOS - Arquitecturas Orientadas a Servicios - UPM
     url: http://miw.etsisi.upm.es/
@@ -35,13 +35,16 @@ paths:
               $ref: '#/components/schemas/NotificationMessage'
       responses:
         '201':
-          description: '`Created`: message queued'
+          description: '`CREATED`: message queued'
+          headers:
+            Location:
+              $ref: '#/components/headers/Location'
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotificationMessage'
         '422':
-          description: '`Unprocessable entity`: textMessage or users is left out'
+          description: '`UNPROCESSABLE ENTITY`: textMessage or users is left out'
           content:
             application/json:
               schema:
@@ -110,3 +113,11 @@ components:
         message:
           description: 'Response message'
           type: string
+  headers:
+    Location:
+      description: '`URL` location of the newly created message'
+      schema:
+        type: string
+        format: url
+        example:
+          /api/v1/NotificationMessages

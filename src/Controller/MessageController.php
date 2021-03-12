@@ -68,7 +68,10 @@ class MessageController extends AbstractController
                 'textMessage' => $postData['textMessage'],
                 'users' => $postData['users'],
             ],
-            Response::HTTP_CREATED
+            Response::HTTP_CREATED,
+            [
+                'Location' => $request->getPathInfo(),
+            ]
         );
     }
 
@@ -91,6 +94,7 @@ class MessageController extends AbstractController
 
         $input = new ArrayInput([
             'command' => 'messenger:consume',
+            '--ansi' => null,
             '--limit' => 1,
             '-vvv' => null
         ]);
@@ -122,7 +126,7 @@ class MessageController extends AbstractController
             Response::HTTP_NO_CONTENT,
             [
                 'Access-Control-Allow-Methods' => 'OPTIONS',
-                'Allow' => 'OPTIONS, GET, POST',
+                'Allow' => 'OPTIONS,GET,POST',
             ]
         );
     }
