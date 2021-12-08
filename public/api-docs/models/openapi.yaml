@@ -83,6 +83,7 @@ paths:
               description: 'List of HTTP supported methods'
               schema:
                 type: string
+
 components:
   schemas:
     NotificationMessage:
