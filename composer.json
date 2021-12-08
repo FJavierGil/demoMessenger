@@ -4,7 +4,7 @@
     "type": "project",
     "license": "MIT",
     "homepage": "http://miw.etsisi.upm.es/",
-    "keywords": ["Symfony5", "amqp", "RabbitMQ", "symfony-messenger", "OpenAPI"],
+    "keywords": ["Symfony6", "amqp", "RabbitMQ", "symfony-messenger", "OpenAPI"],
     "authors": [
         {
             "name": "AOS UPM",
@@ -14,22 +14,25 @@
         }
     ],
     "require": {
-        "php": "^7.4",
+        "php": ">=8.0.2",
         "ext-amqp": "*",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
-        "sensio/framework-extra-bundle": "^5.6",
-        "symfony/console": "5.2.*",
-        "symfony/dotenv": "5.2.*",
-        "symfony/flex": "^1.10",
-        "symfony/framework-bundle": "5.2.*",
-        "symfony/messenger": "5.2.*",
-        "symfony/monolog-bundle": "^3.6",
-        "symfony/yaml": "5.2.*"
+        "sensio/framework-extra-bundle": "^6.2",
+        "symfony/amqp-messenger": "6.0.*",
+        "symfony/console": "6.0.*",
+        "symfony/dotenv": "6.0.*",
+        "symfony/flex": "^2",
+        "symfony/framework-bundle": "6.0.*",
+        "symfony/messenger": "6.0.*",
+        "symfony/monolog-bundle": "^3.7",
+        "symfony/runtime": "6.0.*",
+        "symfony/yaml": "6.0.*"
     },
     "require-dev": {
-        "symfony/profiler-pack": "^1.0"
+        "symfony/stopwatch": "6.0.*",
+        "symfony/web-profiler-bundle": "6.0.*"
     },
     "autoload": {
         "psr-4": {
@@ -44,13 +47,12 @@
         "sort-packages": true
     },
     "replace": {
-        "paragonie/random_compat": "2.*",
         "symfony/polyfill-ctype": "*",
         "symfony/polyfill-iconv": "*",
         "symfony/polyfill-php72": "*",
-        "symfony/polyfill-php71": "*",
-        "symfony/polyfill-php70": "*",
-        "symfony/polyfill-php56": "*"
+        "symfony/polyfill-php73": "*",
+        "symfony/polyfill-php74": "*",
+        "symfony/polyfill-php80": "*"
     },
     "scripts": {
         "auto-scripts": {
@@ -70,7 +72,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "5.2.*"
+            "require": "6.0.*"
         }
     }
 }

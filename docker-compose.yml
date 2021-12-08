@@ -7,7 +7,7 @@ services:
           dockerfile: .docker/apache/Dockerfile
         container_name: producer
         ports:
-          - 8000:80
+          - "8000:80"
         volumes:
           - .docker/config/vhosts:/etc/apache2/sites-enabled:ro
           - .:/home/wwwroot/aos
@@ -20,7 +20,7 @@ services:
             dockerfile: .docker/apache/Dockerfile
         container_name: consumer
         ports:
-            - 8080:80
+            - "8080:80"
         volumes:
             - .docker/config/vhosts:/etc/apache2/sites-enabled:ro
             - .:/home/wwwroot/aos
@@ -40,7 +40,7 @@ services:
         depends_on:
           - rabbitmq
         ports:
-          - 9000:9000
+          - "9000:9000"
 
     rabbitmq:
         build:
@@ -48,7 +48,7 @@ services:
           dockerfile: .docker/rabbitmq/Dockerfile
         container_name: broker_rabbitmq
         ports:
-          - 15672:15672
+          - "15672:15672"
         volumes:
           - rabbitmq:/var/lib/rabbitmq:cached
 

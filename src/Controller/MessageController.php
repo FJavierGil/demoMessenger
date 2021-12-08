@@ -18,29 +18,20 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class MessageController
  *
  * @package App\Controller
- *
- * @Route(
- *     path=MessageController::RUTA_API,
- *     name="api_messenger_"
- * )
  */
+#[Route(path: MessageController::RUTA_API, name: "api_messenger_")]
 class MessageController extends AbstractController
 {
 
     public const RUTA_API = '/api/v1/NotificationMessages';
 
     /**
-     * @Route(
-     *     path="",
-     *     name="producer",
-     *     methods={ Request::METHOD_POST }
-     * )
-     *
      * @param MessageBusInterface $bus
      * @param Request $request
      *
      * @return Response
      */
+    #[Route(path: "", name: "producer", methods: [ Request::METHOD_POST ])]
     public function producer(MessageBusInterface $bus, Request $request): Response
     {
         $body = $request->getContent();
@@ -76,17 +67,12 @@ class MessageController extends AbstractController
     }
 
     /**
-     * @Route(
-     *     path="",
-     *     name="consumer",
-     *     methods={ Request::METHOD_GET }
-     * )
-     *
      * @param KernelInterface $kernel
      *
      * @return Response
      * @throws \Exception
      */
+    #[Route(path: "", name: "consumer", methods: [ Request::METHOD_GET ])]
     public function consumer(KernelInterface $kernel): Response
     {
         $application = new Application($kernel);
@@ -94,9 +80,9 @@ class MessageController extends AbstractController
 
         $input = new ArrayInput([
             'command' => 'messenger:consume',
-            '--ansi' => null,
+            '--ansi' => true,
             '--limit' => 1,
-            '-vvv' => null
+            '-vvv' => true
         ]);
 
         $output = new StreamOutput(fopen('php://stdout', 'wb'));
@@ -110,14 +96,9 @@ class MessageController extends AbstractController
     }
 
     /**
-     * @Route(
-     *     path="",
-     *     methods={ Request::METHOD_OPTIONS },
-     *     name="options"
-     * )
-     *
      * @return Response
      */
+    #[Route(path: "", name: "options", methods: [ Request::METHOD_OPTIONS ])]
     public function optionsAction(): Response
     {
 
