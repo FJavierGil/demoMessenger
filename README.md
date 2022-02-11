@@ -100,7 +100,7 @@ Como curiosidad, si se desea acceder a los detalles internos del funcionamiento 
 
 Finalmente, para detener la ejecución de los contenedores desde el anfitrión se ejecutará el comando:
 ```
-> docker-compose stop
+> docker compose stop
 ```
 
 [lh]: http://localhost:8000/api-docs/index.html
