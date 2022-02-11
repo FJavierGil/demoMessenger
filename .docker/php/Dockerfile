@@ -18,7 +18,7 @@ RUN apt-get -y update \
     && docker-php-ext-install intl
 
 RUN apt -qy install $PHPIZE_DEPS \
-    && pecl install xdebug-3.1.2 \
+    && pecl install xdebug-3.1.3 \
     && docker-php-ext-enable xdebug
 
 RUN pecl install amqp \

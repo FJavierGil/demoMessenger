@@ -60,7 +60,7 @@ Para desplegar el proyecto empleando Docker, basta con ejecutar el siguiente com
 desde el directorio raíz del proyecto:
 
 ```
-> docker-compose up -d
+> docker compose up -d
 ```
 
 La primera vez que se generan las imágenes pueden ser lenta, debido a la instalación de los
