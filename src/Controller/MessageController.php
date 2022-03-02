@@ -6,7 +6,7 @@ use App\Message\NotificationMessage;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Output\StreamOutput;
+use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -85,9 +85,9 @@ class MessageController extends AbstractController
             '-vvv' => true
         ]);
 
-        $output = new StreamOutput(fopen('php://stdout', 'wb'));
+        $output = new BufferedOutput();
         $application->run($input, $output);
-        $content = stream_get_contents($output->getStream());
+        $content = $output->fetch();
 
         return new Response(
             $content,
