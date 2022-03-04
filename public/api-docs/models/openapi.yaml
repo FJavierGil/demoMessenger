@@ -112,6 +112,7 @@ components:
         textMessage: 'Message text'
         users: [ 'foo@example.com', 'bar@example.com' ]
     Message:
+      title: HTTP Message
       type: object
       properties:
         code:

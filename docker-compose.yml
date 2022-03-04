@@ -10,7 +10,7 @@ services:
           - "8000:80"
         volumes:
           - .docker/config/vhosts:/etc/apache2/sites-enabled:ro
-          - .:/home/wwwroot/aos
+          - ./:/home/wwwroot/aos
         depends_on:
           - php
 
@@ -23,7 +23,7 @@ services:
             - "8080:80"
         volumes:
             - .docker/config/vhosts:/etc/apache2/sites-enabled:ro
-            - .:/home/wwwroot/aos
+            - ./:/home/wwwroot/aos
         depends_on:
             - php
 
@@ -32,8 +32,9 @@ services:
           context: .docker/php
           dockerfile: Dockerfile
         container_name: php_fpm
+        user: root
         volumes:
-          - .:/home/wwwroot/aos:rw
+          - ./:/home/wwwroot/aos:rw
         environment:
           - MESSENGER_TRANSPORT_DSN=amqp://guest:guest@broker_rabbitmq:5672/%2f/messages
           - EXCHANGE_NAME=high
