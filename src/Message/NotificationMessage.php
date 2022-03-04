@@ -26,12 +26,11 @@ class NotificationMessage
 
     /**
      * @param string $message
-     * @return NotificationMessage
+     * @return void
      */
-    public function setMessage(string $message): NotificationMessage
+    public function setMessage(string $message): void
     {
         $this->message = $message;
-        return $this;
     }
 
     /**
@@ -44,11 +43,10 @@ class NotificationMessage
 
     /**
      * @param array $users
-     * @return NotificationMessage
+     * @return void
      */
-    public function setUsers(array $users): NotificationMessage
+    public function setUsers(array $users): void
     {
         $this->users = $users;
-        return $this;
     }
 }

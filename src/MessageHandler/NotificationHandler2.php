@@ -5,7 +5,7 @@ namespace App\MessageHandler;
 use App\Message\NotificationMessage;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
-class AnotherNotificationHandler implements MessageHandlerInterface
+class NotificationHandler2 implements MessageHandlerInterface
 {
 
     public function __invoke(NotificationMessage $message)

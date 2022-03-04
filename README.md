@@ -40,8 +40,8 @@ del envío de los mensajes a las diferentes colas de acuerdo a sus reglas intern
 
 ### 📩 Servicio consumidor de notificaciones _(consumidor, puerto 8080)_
 El servicio _consumir notificación_ actúa como **consumidor**: se conecta al gestor de mensajes, 
-y, si hay algún mensaje en la cola, lo recoge. En este ejemplo, cuando se procesa un mensaje se simula el
-envío de un texto a la lista de destinatarios de la notificación.
+y, si hay algún mensaje en la cola, lo recoge. En este ejemplo, cuando se procesa un mensaje 
+simplemente se simula el envío de un texto a la lista de destinatarios de la notificación.
 
 ![img](public/img/imagen3.png)
 
@@ -63,7 +63,7 @@ desde el directorio raíz del proyecto:
 > docker compose up -d
 ```
 
-La primera vez que se generan las imágenes pueden ser lenta, debido a la instalación de los
+La primera vez que se generan las imágenes pueden ser algo lenta, debido a la instalación de los
 diferentes componentes requeridos por la aplicación.
 
 Desde la consola del sistema anfitrión se puede ver la lista de los contenedores desplegados empleando:
@@ -100,7 +100,7 @@ Como curiosidad, si se desea acceder a los detalles internos del funcionamiento 
 
 Finalmente, para detener la ejecución de los contenedores desde el anfitrión se ejecutará el comando:
 ```
-> docker compose stop
+> docker compose down --rmi local -v
 ```
 
 [lh]: http://localhost:8000/api-docs/index.html

@@ -1,11 +1,17 @@
 openapi: 3.0.3
+
 info:
   title: AOS - Messenger - REST api
-  description: '[UPM] AOS - Messenger - REST api operations'
+  description: |
+    ## 📬 Ejemplo de servicio asíncrono basado en mensajes _(con el gestor RabbitMQ)_
+    Ejemplo de implementación de dos servicios asíncronos que se comunican a través de un gestor de colas de mensajes.
+    El gestor de mensajes (_message broker_) empleado es [**RabbitMQ**](https://www.rabbitmq.com/), que proporciona un sistema de negociación
+    de mensajes de código abierto. Por su parte, los servicios utilizan el protocolo [*AMQP*](https://www.amqp.org/) para conectarse con 
+    el gestor de mensajes.
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
-  version: 1.1.2
+  version: 1.2.0
   contact:
     name: AOS - Arquitecturas Orientadas a Servicios - UPM
     url: http://miw.etsisi.upm.es/
@@ -16,15 +22,15 @@ servers:
     description: 'AOS Production server'
 
 tags:
-  - name: NotificationMessages
+  - name: '📧 NotificationMessages'
     description: 'Notification Message management'
 
 paths:
   /NotificationMessages:
     post:
-      tags: [ NotificationMessages ]
+      tags: [ '📧 NotificationMessages' ]
       summary: Creates a new message
-      description: 'Create a new notification message and send it to the queue'
+      description: 'Creates a new notification message and send it to the queue'
       operationId: api_messenger_producer
       requestBody:
         description: '`NotificationMessage` properties to add to the queue'
@@ -44,7 +50,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotificationMessage'
         '422':
-          description: '`UNPROCESSABLE ENTITY`: textMessage or users is left out'
+          description: '`UNPROCESSABLE ENTITY`: _textMessage_ or _users_ is left out'
           content:
             application/json:
               schema:
@@ -54,7 +60,7 @@ paths:
                 message: 'Unprocessable entity: textMessage or users is left out'
 
     get:
-      tags: [ NotificationMessages ]
+      tags: [ '📧 NotificationMessages' ]
       summary: Consume one message
       description: 'Consume one message.'
       operationId: api_messenger_consumer
@@ -71,7 +77,7 @@ paths:
 
     options:
       tags:
-        - NotificationMessages
+        - '📧 NotificationMessages'
       summary: Provides the list of HTTP supported methods
       description: 'Return a `Allow` header with a comma separated list of HTTP supported methods.'
       operationId: api_messenger_options
@@ -87,6 +93,7 @@ paths:
 components:
   schemas:
     NotificationMessage:
+      title: '📧 NotificationMessage'
       type: object
       required:
         - textMessage
