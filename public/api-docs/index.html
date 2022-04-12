@@ -6,15 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="SwaggerIU" />
     <title>AOS - Messenger - Swagger UI</title>
-    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@4.6.1/swagger-ui.css" />
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@highlightjs/cdn-assets/styles/default.min.css">
     <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
     <style>
       html
       {
         box-sizing: border-box;
-        overflow: -moz-scrollbars-vertical;
+        // overflow: -moz-scrollbars-vertical;
+        overflow-x: hidden;
         overflow-y: scroll;
       }
 
@@ -35,8 +36,8 @@
 
   <body>
     <div id="swagger-ui"></div>
-    <script src="https://unpkg.com/swagger-ui-dist@4.6.1/swagger-ui-bundle.js" crossorigin></script>
-    <script src="https://unpkg.com/swagger-ui-dist@4.6.1/swagger-ui-standalone-preset.js" charset="UTF-8" crossorigin></script>
+    <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" crossorigin></script>
+    <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8" crossorigin></script>
 
     <script>
     window.onload = function() {
@@ -72,7 +73,7 @@
       window.ui = ui
     }
   </script>
-    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.5.0/highlight.min.js"></script>
+    <script src="https://unpkg.com/@highlightjs/cdn-assets/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
   </body>
 </html>

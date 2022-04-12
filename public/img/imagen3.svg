@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="319px" preserveAspectRatio="none" style="width:401px;height:319px;background:#FFFFFF;" version="1.1" viewBox="0 0 401 319" width="401px" zoomAndPan="magnify"><defs><filter height="300%" id="f1u8xyidd8r3vp" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="171" x="215" y="10.3809">Servicios asíncronos con RabbittMQ</text><!--MD5=[5855efd13d3e8b3efa91bb28c792386f]
+cluster Consumer <&envelope-open>--><polygon fill="#FFFFFF" filter="url(#f1u8xyidd8r3vp)" points="110,200.5781,120,190.5781,273,190.5781,273,302.5781,263,312.5781,110,312.5781,110,200.5781" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="263" x2="273" y1="200.5781" y2="190.5781"/><line style="stroke:#000000;stroke-width:1.5;" x1="110" x2="263" y1="200.5781" y2="200.5781"/><line style="stroke:#000000;stroke-width:1.5;" x1="263" x2="263" y1="200.5781" y2="312.5781"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="72" x="143.8333" y="218.1113">Consumer</text><path d="M225.5,208.3542 L220.8333,210.6875 L220.8333,217.6875 L230.1667,217.6875 L230.1667,210.6875 L225.5,208.3542 M225.5,209.6725 L229,211.4225 L229,213.6158 L225.5,215.3658 L222,213.6158 L222,211.4225 L225.5,209.6725 M223.1667,211.8658 L223.1667,213.0325 L225.5,214.1992 L227.8333,213.0325 L227.8333,211.8658 L223.1667,211.8658 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><!--MD5=[7fa380b7aa72c754a0b54c05100abb6d]
+cluster broker RabbittMQ <&cloud>--><polygon fill="#FFFFFF" filter="url(#f1u8xyidd8r3vp)" points="16,28.5781,26,18.5781,297,18.5781,297,130.5781,287,140.5781,16,140.5781,16,28.5781" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="287" x2="297" y1="28.5781" y2="18.5781"/><line style="stroke:#000000;stroke-width:1.5;" x1="16" x2="287" y1="28.5781" y2="28.5781"/><line style="stroke:#000000;stroke-width:1.5;" x1="287" x2="287" y1="28.5781" y2="140.5781"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="125" x="82.3333" y="46.1113">broker RabbittMQ</text><path d="M217.5833,36.3542 C216.1717,36.3542 214.935,37.3575 214.6667,38.6875 C213.3833,38.6875 212.3333,39.7375 212.3333,41.0208 C212.3333,42.3042 213.3833,43.3542 214.6667,43.3542 L219.9167,43.3542 C220.885,43.3542 221.6667,42.5725 221.6667,41.6042 C221.6667,40.8458 221.1767,40.0992 220.5,39.8542 L220.5,39.2708 C220.5,37.6608 219.1933,36.3542 217.5833,36.3542 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><!--MD5=[a6e63e5080b6098cbc36e97e7cf20a2e]
+entity consumer--><rect fill="#5B9BD5" filter="url(#f1u8xyidd8r3vp)" height="65.2188" style="stroke:#A80036;stroke-width:1.5;" width="120" x="135" y="231.5781"/><rect fill="#5B9BD5" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="235" y="236.5781"/><rect fill="#5B9BD5" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="233" y="238.5781"/><rect fill="#5B9BD5" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="233" y="242.5781"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="76" x="150" y="266.1113">Consumidor</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="80" x="150" y="283.7207">de mensajes</text><!--MD5=[fa22ef6f5aea1ebca4926a74549090ce]
+entity cola--><rect fill="#EFA97A" filter="url(#f1u8xyidd8r3vp)" height="65.2188" style="stroke:#A80036;stroke-width:1.5;" width="153" x="127.5" y="59.5781"/><rect fill="#EFA97A" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="260.5" y="64.5781"/><rect fill="#EFA97A" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="258.5" y="66.5781"/><rect fill="#EFA97A" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="258.5" y="70.5781"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="113" x="142.5" y="94.1113">Cola de mensajes</text><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="109" x="142.5" y="111.7207">(messages_high)</text><!--MD5=[fd29c16a61755d2f0d64abb16841689f]
+entity Exchange--><ellipse cx="41" cy="92.0781" fill="#FEFECE" filter="url(#f1u8xyidd8r3vp)" rx="8" ry="8" style="stroke:#FFA500;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="62" x="10" y="123.6113">Exchange</text><path d="M290,234.5781 L290,260.0781 L255.17,264.0781 L290,268.0781 L290,293.6328 A0,0 0 0 0 290,293.6328 L392,293.6328 A0,0 0 0 0 392,293.6328 L392,244.5781 L382,234.5781 L290,234.5781 A0,0 0 0 0 290,234.5781 " fill="#FBFB77" filter="url(#f1u8xyidd8r3vp)" style="stroke:#A80036;stroke-width:1.0;"/><path d="M382,234.5781 L382,244.5781 L392,244.5781 L382,234.5781 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="74" x="296" y="253.0732">consume los</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="56" x="296" y="269.4248">mensajes</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="81" x="296" y="285.7764">bajo demanda</text><!--MD5=[5b60a0f01e899dde3b2918f48f212a5f]
+link Exchange to cola--><path d="M50.23,92.0781 C64.49,92.0781 93.26,92.0781 122.09,92.0781 " fill="none" id="Exchange-to-cola" style="stroke:#A80036;stroke-width:2.0;"/><polygon fill="#A80036" points="127.09,92.0781,118.09,88.0781,122.09,92.0781,118.09,96.0781,127.09,92.0781" style="stroke:#A80036;stroke-width:2.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="41" x="68.25" y="85.5732">binding</text><!--MD5=[60e4e1a29be410e1703672a42feb10a8]
+link cola to consumer--><path d="M176.57,124.6681 C169.82,134.2881 163.52,145.3081 160,156.5781 C152.66,180.0681 161.11,206.3281 171.54,226.8981 " fill="none" id="cola-to-consumer" style="stroke:#A80036;stroke-width:2.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="173.93,231.4681,173.3067,221.639,171.6142,227.0367,166.2165,225.3442,173.93,231.4681" style="stroke:#A80036;stroke-width:2.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="39" x="161" y="171.0732">AMQP</text><!--MD5=[aee79f02a36068321143c97728747067]
+reverse link cola to consumer--><path d="M204.68,130.0681 C204.81,138.7581 204.93,147.9981 205,156.5781 C205.06,164.5781 205.45,166.5881 205,174.5781 C203.94,193.4081 201.62,214.3981 199.48,231.1981 " fill="none" id="cola-backto-consumer" style="stroke:#A80036;stroke-width:2.0;"/><polygon fill="#A80036" points="204.6,124.7281,200.7549,133.7954,204.6857,129.7274,208.7537,133.6582,204.6,124.7281" style="stroke:#A80036;stroke-width:2.0;"/><!--MD5=[b792c8f191bec0da04068e673ade4fe3]
+@startuml
+skinparam componentStyle uml2
+skinparam sequenceArrowThickness 2
+
+skinparam interface {
+  borderColor orange
+}
+
+header Servicios asíncronos con RabbittMQ
+
+' node "Producer <&envelope-closed>" {
+'   component "Productor\nde mensajes" as producer #5B9BD5
+' }
+
+node "Consumer <&envelope-open>" {
+  component "Consumidor\nde mensajes" as consumer #5B9BD5
+}
+note right
+consume los
+mensajes
+bajo demanda
+end note
+
+node "broker RabbittMQ <&cloud>" {
+  component cola #efa97a [
+    Cola de mensajes
+    //(messages_high)//
+  ]
+  interface Exchange
+'  note left
+'    high
+'  end note
+
+'  producer -up-> Exchange: AMQP
+  Exchange -right-> cola: binding
+
+  cola .down.> consumer: AMQP
+  consumer -up-> cola
+}
+
+@enduml
+
+@startuml
+skinparam componentStyle uml2
+skinparam sequenceArrowThickness 2
+
+skinparam interface {
+  borderColor orange
+}
+
+header Servicios asíncronos con RabbittMQ
+
+
+node "Consumer <&envelope-open>" {
+  component "Consumidor\nde mensajes" as consumer #5B9BD5
+}
+note right
+consume los
+mensajes
+bajo demanda
+end note
+
+node "broker RabbittMQ <&cloud>" {
+  component cola #efa97a [
+    Cola de mensajes
+    //(messages_high)//
+  ]
+  interface Exchange
+
+  Exchange -right-> cola: binding
+
+  cola .down.> consumer: AMQP
+  consumer -up-> cola
+}
+
+@enduml
+
+PlantUML version 1.2022.1(Tue Feb 01 19:19:58 CET 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: es
+Country: ES
+--></g></svg>

@@ -25,13 +25,13 @@ correo electrónico similar a:
 ```
 &nbsp;
 
-![img](public/img/imagen1.png)
+![img](public/img/diagramaComponentes.svg)
 ### 📨 Servicio de envío de notificaciones _(productor, puerto 8000)_
 El servicio de envío de notificaciones actúa como **productor**: construye un mensaje que contiene la
 notificación y lo entrega al intermediario, es decir, lo envía a la cola de mensajes. El mensaje permanecerá
 en la cola a la espera de ser consumido por algún servicio.
 
-![img](public/img/imagen2.png)
+![img](public/img/imagen2.svg)
 
 En el ejemplo la cola se ha denominado `messages_high`. Dentro de RabbittMQ, cuando un productor desea
 encolar un nuevo mensaje, lo que hace es enviarlo a un intercambiador (_exchange_), que se
@@ -43,7 +43,7 @@ El servicio _consumir notificación_ actúa como **consumidor**: se conecta al g
 y, si hay algún mensaje en la cola, lo recoge. En este ejemplo, cuando se procesa un mensaje 
 simplemente se simula el envío de un texto a la lista de destinatarios de la notificación.
 
-![img](public/img/imagen3.png)
+![img](public/img/imagen3.svg)
 
 En esta implementación, tanto productor como consumidor utilizan un cuarto servicio
 (denominado _php_fpm_) que proporciona el intérprete FPM (FastCGI Process Manager) de PHP.

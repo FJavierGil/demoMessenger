@@ -8,11 +8,11 @@ info:
     El gestor de mensajes (_message broker_) empleado es [**RabbitMQ**](https://www.rabbitmq.com/), que proporciona un sistema de negociación
     de mensajes de código abierto. Por su parte, los servicios utilizan el protocolo [*AMQP*](https://www.amqp.org/) para conectarse con 
     el gestor de mensajes.
-    ![img](/img/imagen1.png)
+    ![img](/img/diagramaComponentes.svg)
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
-  version: 1.2.1
+  version: 1.2.2
   contact:
     name: AOS - Arquitecturas Orientadas a Servicios - UPM
     url: http://miw.etsisi.upm.es/
