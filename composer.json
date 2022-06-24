@@ -20,19 +20,19 @@
         "ext-iconv": "*",
         "ext-json": "*",
         "sensio/framework-extra-bundle": "^6.2",
-        "symfony/amqp-messenger": "6.0.*",
-        "symfony/console": "6.0.*",
-        "symfony/dotenv": "6.0.*",
+        "symfony/amqp-messenger": "^6.1",
+        "symfony/console": "^6.1",
+        "symfony/dotenv": "^6.1",
         "symfony/flex": "^2",
-        "symfony/framework-bundle": "6.0.*",
-        "symfony/messenger": "6.0.*",
-        "symfony/monolog-bundle": "^3.7",
-        "symfony/runtime": "6.0.*",
-        "symfony/yaml": "6.0.*"
+        "symfony/framework-bundle": "^6.1",
+        "symfony/messenger": "^6.1",
+        "symfony/monolog-bundle": "^3.8",
+        "symfony/runtime": "^6.1",
+        "symfony/yaml": "^6.1"
     },
     "require-dev": {
-        "symfony/stopwatch": "6.0.*",
-        "symfony/web-profiler-bundle": "6.0.*"
+        "symfony/stopwatch": "^6.1",
+        "symfony/web-profiler-bundle": "^6.1"
     },
     "autoload": {
         "psr-4": {
@@ -76,7 +76,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "6.0.*"
+            "require": "6.1.*"
         }
     }
 }

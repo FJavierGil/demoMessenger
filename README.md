@@ -60,7 +60,7 @@ Para desplegar el proyecto empleando Docker, basta con ejecutar el siguiente com
 desde el directorio raíz del proyecto:
 
 ```
-> docker compose up -d
+docker compose up -d
 ```
 
 La primera vez que se generan las imágenes pueden ser algo lenta, debido a la instalación de los
@@ -68,7 +68,7 @@ diferentes componentes requeridos por la aplicación.
 
 Desde la consola del sistema anfitrión se puede ver la lista de los contenedores desplegados empleando:
 ```
-> docker ps --format "{{.Names}}: Ports [{{.Ports}}]"
+docker ps --format "{{.Names}}: Ports [{{.Ports}}]"
 ``` 
 
 Una vez desplegado el proyecto, se podrá acceder a la interfaz de usuario de la especificación 
@@ -87,7 +87,7 @@ Aparte de utilizar la interfaz de la API, también es posible consumir los mensa
 de la consola de comandos (con mayor nivel de detalle). Para ello se deberán ejecutar los
 siguientes comandos:
 ```
-> docker exec -it -u dev php_fpm bash
+docker exec -it -u dev php_fpm bash
 :/home/wwwroot$ cd ./aos
 :/home/wwwroot/aos$ bin/console -vvv --limit=1 messenger:consume
 ```
@@ -100,7 +100,7 @@ Como curiosidad, si se desea acceder a los detalles internos del funcionamiento 
 
 Finalmente, para detener la ejecución de los contenedores desde el anfitrión se ejecutará el comando:
 ```
-> docker compose down --rmi local -v
+docker compose down --rmi local -v
 ```
 
 [lh]: http://localhost:8000/api-docs/index.html
