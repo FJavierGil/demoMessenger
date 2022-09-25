@@ -16,4 +16,4 @@ ServerName localhost \
 ' /etc/apache2/apache2.conf
 EXPOSE 80
 RUN rm -f /run/apache2/apache2.pid
-CMD apachectl -D FOREGROUND -e info
+ENTRYPOINT ["apachectl", "-D", "FOREGROUND", "-e", "info"]

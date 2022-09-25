@@ -10,15 +10,17 @@ RUN apt-get update -yqq \
     # iputils-ping netcat \
     # RabbitMQ
     librabbitmq-dev \
+    && rm -rf /var/lib/apt/lists/* \
 ;
 
-RUN apt-get -y update \
-    && apt-get install -y libicu-dev \
+RUN apt-get --no-install-recommends -y update \
+    && apt-get --no-install-recommends install -y libicu-dev \
     && docker-php-ext-configure intl \
-    && docker-php-ext-install intl
+    && docker-php-ext-install intl \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN apt -qy install $PHPIZE_DEPS \
-    && pecl install xdebug-3.1.3 \
+RUN apt-get --no-install-recommends -qy install $PHPIZE_DEPS \
+    && pecl install xdebug-3.1.5 \
     && docker-php-ext-enable xdebug
 
 RUN pecl install amqp \
@@ -29,6 +31,7 @@ COPY php-fpm-pool.conf /usr/local/etc/php/pool.d/www.conf
 COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN curl -sSk https://getcomposer.org/installer | php -- --disable-tls && \
    mv composer.phar /usr/local/bin/composer && chmod +x /usr/local/bin/composer
 
@@ -37,7 +40,9 @@ RUN useradd dev -g dev -d /home/dev -m
 RUN passwd -d dev
 RUN chmod +x /docker-entrypoint.sh
 
-RUN rm -rf /var/lib/apt/lists/*
+RUN apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
     echo "es_ES.UTF-8 UTF-8" >> /etc/locale.gen && \
     locale-gen
