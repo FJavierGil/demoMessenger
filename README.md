@@ -59,7 +59,7 @@ de esta fenomenal herramienta que permite realizar pruebas interactivas de maner
 Para desplegar el proyecto empleando Docker, basta con ejecutar el siguiente comando 
 desde el directorio raíz del proyecto:
 
-```
+```docker
 docker compose up -d
 ```
 
@@ -67,7 +67,7 @@ La primera vez que se generan las imágenes pueden ser algo lenta, debido a la i
 diferentes componentes requeridos por la aplicación.
 
 Desde la consola del sistema anfitrión se puede ver la lista de los contenedores desplegados empleando:
-```
+```docker
 docker ps --format "{{.Names}}: Ports [{{.Ports}}]"
 ``` 
 
@@ -86,10 +86,12 @@ detalles de la misma en tiempo real (la interfaz se actualiza automáticamente p
 Aparte de utilizar la interfaz de la API, también es posible consumir los mensajes a través
 de la consola de comandos (con mayor nivel de detalle). Para ello se deberán ejecutar los
 siguientes comandos:
-```
+```docker
 docker exec -it -u dev php_fpm bash
-:/home/wwwroot$ cd ./aos
-:/home/wwwroot/aos$ bin/console -vvv --limit=1 messenger:consume
+```
+```bash
+cd ./aos
+bin/console -vvv --limit=1 messenger:consume
 ```
 
 ### 🛑 Deteniendo los servicios
@@ -99,7 +101,7 @@ Como curiosidad, si se desea acceder a los detalles internos del funcionamiento 
 [http://localhost:8000/_profiler][profiler].
 
 Finalmente, para detener la ejecución de los contenedores desde el anfitrión se ejecutará el comando:
-```
+```docker
 docker compose down --rmi local -v
 ```
 
