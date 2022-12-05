@@ -6,7 +6,7 @@ skinparam interface {
   borderColor orange
 }
 
-header Servicios asíncronos con RabbittMQ
+header [AOS - UPM]: Servicios asíncronos con RabbittMQ
 
 node "Producer <&envelope-closed>" {
   component "Productor\nde mensajes" as producer #5B9BD5
