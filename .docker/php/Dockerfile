@@ -20,7 +20,7 @@ RUN apt-get --no-install-recommends -y update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get --no-install-recommends -qy install $PHPIZE_DEPS \
-    && pecl install xdebug-3.1.5 \
+    && pecl install xdebug-3.1.6 \
     && docker-php-ext-enable xdebug
 
 RUN pecl install amqp \
@@ -32,8 +32,8 @@ COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN curl -sSk https://getcomposer.org/installer | php -- --disable-tls && \
-   mv composer.phar /usr/local/bin/composer && chmod +x /usr/local/bin/composer
+RUN curl -sSk https://getcomposer.org/installer | php -- && \
+    mv composer.phar /usr/local/bin/composer && chmod +x /usr/local/bin/composer
 
 RUN groupadd dev -g 999
 RUN useradd dev -g dev -d /home/dev -m

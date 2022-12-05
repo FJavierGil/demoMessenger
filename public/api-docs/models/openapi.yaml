@@ -1,21 +1,22 @@
-openapi: 3.0.3
+﻿openapi: 3.0.3
 
 info:
   title: AOS - Messenger - REST api
   description: |
     ## 📬 Ejemplo de servicio asíncrono basado en mensajes _(con el gestor RabbitMQ)_
-    Ejemplo de implementación de dos servicios asíncronos que se comunican a través de un gestor de colas de mensajes.
-    El gestor de mensajes (_message broker_) empleado es [**RabbitMQ**](https://www.rabbitmq.com/), que proporciona un sistema de negociación
-    de mensajes de código abierto. Por su parte, los servicios utilizan el protocolo [*AMQP*](https://www.amqp.org/) para conectarse con 
-    el gestor de mensajes.
+    Implementación de dos servicios asíncronos que se comunican a través de un gestor de colas de mensajes.
+    El gestor de mensajes (_message broker_) empleado es [**RabbitMQ**](https://www.rabbitmq.com/), que proporciona un
+    sistema  de código abierto para la negociación de mensajes. Por su parte, los servicios utilizan el protocolo
+    [*AMQP*](https://www.amqp.org/) para conectarse con el gestor de mensajes.
+    
     ![img](/img/diagramaComponentes.svg)
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
-  version: 1.2.2
+  version: 1.2.3
   contact:
     name: AOS - Arquitecturas Orientadas a Servicios - UPM
-    url: http://miw.etsisi.upm.es/
+    url: https://miw.etsisi.upm.es/
     email: miw.etsisi@upm.es
 
 servers:

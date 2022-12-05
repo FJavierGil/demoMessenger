@@ -49,7 +49,7 @@ En esta implementación, tanto productor como consumidor utilizan un cuarto serv
 (denominado _php_fpm_) que proporciona el intérprete FPM (FastCGI Process Manager) de PHP.
 
 ***
-## 🆙 Despliegue de los servicios
+## 🚀 Despliegue de los servicios
 
 Para acceder a estas operaciones se ha desarrollado una API que ha sido documentada
 a través del esquema [OpenAPI 3.0][openapi]. Esta especificación se ha elaborado empleando el editor

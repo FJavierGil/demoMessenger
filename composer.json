@@ -3,36 +3,36 @@
     "description": "Demo componente symfony/messenger con broker RabbitMQ",
     "type": "project",
     "license": "MIT",
-    "homepage": "http://miw.etsisi.upm.es/",
+    "homepage": "https://miw.etsisi.upm.es/",
     "keywords": ["Symfony6", "amqp", "RabbitMQ", "symfony-messenger", "OpenAPI"],
     "authors": [
         {
             "name": "AOS UPM",
-            "homepage": "http://www.etsisi.upm.es/",
+            "homepage": "https://www.etsisi.upm.es/",
             "email": "miw.etsisi@upm.es",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": ">=8.0.2",
+        "php": ">=8.1",
         "ext-amqp": "*",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
         "sensio/framework-extra-bundle": "^6.2",
-        "symfony/amqp-messenger": "^6.1",
-        "symfony/console": "^6.1",
-        "symfony/dotenv": "^6.1",
+        "symfony/amqp-messenger": "^6.2",
+        "symfony/console": "^6.2",
+        "symfony/dotenv": "^6.2",
         "symfony/flex": "^2",
-        "symfony/framework-bundle": "^6.1",
-        "symfony/messenger": "^6.1",
+        "symfony/framework-bundle": "^6.2",
+        "symfony/messenger": "^6.2",
         "symfony/monolog-bundle": "^3.8",
-        "symfony/runtime": "^6.1",
-        "symfony/yaml": "^6.1"
+        "symfony/runtime": "^6.2",
+        "symfony/yaml": "^6.2"
     },
     "require-dev": {
-        "symfony/stopwatch": "^6.1",
-        "symfony/web-profiler-bundle": "^6.1"
+        "symfony/stopwatch": "^6.2",
+        "symfony/web-profiler-bundle": "^6.2"
     },
     "autoload": {
         "psr-4": {
@@ -76,7 +76,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "6.1.*"
+            "require": "6.2.*"
         }
     }
 }
