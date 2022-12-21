@@ -3,13 +3,11 @@
 namespace App\Controller;
 
 use App\Message\NotificationMessage;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Output\BufferedOutput;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Console;
+use Symfony\Component\HttpFoundation;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,32 +17,38 @@ use Symfony\Component\Routing\Annotation\Route;
  *
  * @package App\Controller
  */
-#[Route(path: MessageController::RUTA_API, name: "api_messenger_")]
+#[Route(
+    path: MessageController::RUTA_API,
+    name: "api_messenger_"
+)]
 class MessageController extends AbstractController
 {
-
     public const RUTA_API = '/api/v1/NotificationMessages';
 
     /**
      * @param MessageBusInterface $bus
-     * @param Request $request
+     * @param HttpFoundation\Request $request
      *
-     * @return Response
+     * @return HttpFoundation\Response
      */
-    #[Route(path: "", name: "producer", methods: [ Request::METHOD_POST ])]
-    public function producer(MessageBusInterface $bus, Request $request): Response
+    #[Route(
+        path: "",
+        name: "producer",
+        methods: [ HttpFoundation\Request::METHOD_POST ]
+    )]
+    public function producer(MessageBusInterface $bus, HttpFoundation\Request $request): HttpFoundation\Response
     {
         $body = $request->getContent();
         $postData = json_decode($body, true);
 
         if (!isset($postData['users'], $postData['textMessage'])) { // 422
             // 422 - Unprocessable Entity - Faltan datos
-            return new JsonResponse(
+            return new HttpFoundation\JsonResponse(
                 [
-                    'code' => Response::HTTP_UNPROCESSABLE_ENTITY,
-                    'message' => Response::$statusTexts[422]
+                    'code' => HttpFoundation\Response::HTTP_UNPROCESSABLE_ENTITY,
+                    'message' => HttpFoundation\Response::$statusTexts[422]
                 ],
-                Response::HTTP_UNPROCESSABLE_ENTITY
+                HttpFoundation\Response::HTTP_UNPROCESSABLE_ENTITY
             );
         }
 
@@ -54,12 +58,12 @@ class MessageController extends AbstractController
         );
         $bus->dispatch($notificationMessage);
 
-        return new JsonResponse(
+        return new HttpFoundation\JsonResponse(
             [
                 'textMessage' => $postData['textMessage'],
                 'users' => $postData['users'],
             ],
-            Response::HTTP_CREATED,
+            HttpFoundation\Response::HTTP_CREATED,
             [
                 'Location' => $request->getPathInfo(),
             ]
@@ -69,43 +73,50 @@ class MessageController extends AbstractController
     /**
      * @param KernelInterface $kernel
      *
-     * @return Response
-     * @throws \Exception
+     * @return HttpFoundation\Response
+     * @throws Exception
      */
-    #[Route(path: "", name: "consumer", methods: [ Request::METHOD_GET ])]
-    public function consumer(KernelInterface $kernel): Response
+    #[Route(
+        path: "",
+        name: "consumer",
+        methods: [ HttpFoundation\Request::METHOD_GET ]
+    )]
+    public function consumer(KernelInterface $kernel): HttpFoundation\Response
     {
         $application = new Application($kernel);
         $application->setAutoExit(true);
 
-        $input = new ArrayInput([
+        $input = new Console\Input\ArrayInput([
             'command' => 'messenger:consume',
             '--ansi' => true,
             '--limit' => 1,
             '-vvv' => true
         ]);
 
-        $output = new BufferedOutput();
+        $output = new Console\Output\BufferedOutput();
         $application->run($input, $output);
         $content = $output->fetch();
 
-        return new Response(
+        return new HttpFoundation\Response(
             $content,
-            Response::HTTP_OK
+            HttpFoundation\Response::HTTP_OK
         );
     }
 
     /**
-     * @return Response
+     * @return HttpFoundation\Response
      */
-    #[Route(path: "", name: "options", methods: [ Request::METHOD_OPTIONS ])]
-    public function optionsAction(): Response
+    #[Route(
+        path: "",
+        name: "options",
+        methods: [ HttpFoundation\Request::METHOD_OPTIONS ]
+    )]
+    public function optionsAction(): HttpFoundation\Response
     {
 
-        return new JsonResponse(
-            null,
-            Response::HTTP_NO_CONTENT,
-            [
+        return new HttpFoundation\Response(
+            status: HttpFoundation\Response::HTTP_NO_CONTENT,
+            headers: [
                 'Access-Control-Allow-Methods' => 'OPTIONS',
                 'Allow' => 'OPTIONS,GET,POST',
             ]

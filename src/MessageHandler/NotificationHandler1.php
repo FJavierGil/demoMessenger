@@ -3,12 +3,12 @@
 namespace App\MessageHandler;
 
 use App\Message\NotificationMessage;
-use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
-class NotificationHandler1 implements MessageHandlerInterface
+#[AsMessageHandler]
+class NotificationHandler1
 {
-
-    public function __invoke(NotificationMessage $message)
+    public function __invoke(NotificationMessage $message): void
     {
         foreach ($message->getUsers() as $user) {
             sleep(1);

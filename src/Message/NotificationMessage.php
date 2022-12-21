@@ -6,14 +6,10 @@ namespace App\Message;
 
 class NotificationMessage
 {
-    private string $message;
-
-    private array $users;
-
-    public function __construct(string $message = '', array $users = [])
-    {
-        $this->message = $message;
-        $this->users = $users;
+    public function __construct(
+        protected string $message = '',
+        protected array $users = []
+    ) {
     }
 
     /**
