@@ -44,27 +44,27 @@ class MessageController extends AbstractController
         if (!isset($postData['users'], $postData['textMessage'])) { // 422
             // 422 - Unprocessable Entity - Faltan datos
             return new HttpFoundation\JsonResponse(
-                [
+                data: [
                     'code' => HttpFoundation\Response::HTTP_UNPROCESSABLE_ENTITY,
                     'message' => HttpFoundation\Response::$statusTexts[422]
                 ],
-                HttpFoundation\Response::HTTP_UNPROCESSABLE_ENTITY
+                status: HttpFoundation\Response::HTTP_UNPROCESSABLE_ENTITY
             );
         }
 
         $notificationMessage = new NotificationMessage(
-            $postData['textMessage'],
-            $postData['users']
+            message: $postData['textMessage'],
+            users: $postData['users']
         );
         $bus->dispatch($notificationMessage);
 
         return new HttpFoundation\JsonResponse(
-            [
+            data: [
                 'textMessage' => $postData['textMessage'],
                 'users' => $postData['users'],
             ],
-            HttpFoundation\Response::HTTP_CREATED,
-            [
+            status: HttpFoundation\Response::HTTP_CREATED,
+            headers: [
                 'Location' => $request->getPathInfo(),
             ]
         );
@@ -98,8 +98,8 @@ class MessageController extends AbstractController
         $content = $output->fetch();
 
         return new HttpFoundation\Response(
-            $content,
-            HttpFoundation\Response::HTTP_OK
+            content: $content,
+            status: HttpFoundation\Response::HTTP_OK
         );
     }
 
