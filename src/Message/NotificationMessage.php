@@ -38,7 +38,7 @@ class NotificationMessage
     }
 
     /**
-     * @param array $users
+     * @param array<string> $users
      * @return void
      */
     public function setUsers(array $users): void

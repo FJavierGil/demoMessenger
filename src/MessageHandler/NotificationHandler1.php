@@ -12,7 +12,7 @@ class NotificationHandler1
     {
         foreach ($message->getUsers() as $user) {
             sleep(1);
-            echo "Handler1: Notification send to " .  $user . PHP_EOL;
+            echo sprintf("Handler1: Notification send to %s\n", $user);
         }
     }
 }
