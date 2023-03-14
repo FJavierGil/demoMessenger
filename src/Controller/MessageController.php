@@ -66,6 +66,9 @@ class MessageController extends AbstractController
             status: HttpFoundation\Response::HTTP_CREATED,
             headers: [
                 'Location' => $request->getPathInfo(),
+                'Access-Control-Allow-Origin' => '*',
+                'Access-Control-Allow-Methods' => 'POST, OPTIONS',
+                'Access-Control-Allow-Headers' => 'Content-Type, api_key, Authorization',
             ]
         );
     }
@@ -99,7 +102,12 @@ class MessageController extends AbstractController
 
         return new HttpFoundation\Response(
             content: $content,
-            status: HttpFoundation\Response::HTTP_OK
+            status: HttpFoundation\Response::HTTP_OK,
+            headers: [
+                'Access-Control-Allow-Origin' => '*',
+                'Access-Control-Allow-Methods' => 'GET, OPTIONS',
+                'Access-Control-Allow-Headers' => 'Content-Type, api_key, Authorization',
+            ]
         );
     }
 
@@ -117,7 +125,10 @@ class MessageController extends AbstractController
         return new HttpFoundation\Response(
             status: HttpFoundation\Response::HTTP_NO_CONTENT,
             headers: [
-                'Access-Control-Allow-Methods' => 'OPTIONS',
+                'Access-Control-Allow-Origin' => '*',
+                'Access-Control-Allow-Methods' => 'OPTIONS, GET, POST',
+                'Access-Control-Allow-Headers' => 'Content-Type, api_key, Authorization',
+                'Vary' => 'Origin',
                 'Allow' => 'OPTIONS,GET,POST',
             ]
         );

@@ -16,8 +16,8 @@ services:
 
     consumer:
         build:
-            context: .
-            dockerfile: .docker/apache/Dockerfile
+          context: .
+          dockerfile: .docker/apache/Dockerfile
         container_name: consumer
         ports:
             - "8080:80"
@@ -46,8 +46,8 @@ services:
 
     rabbitmq:
         build:
-          context: .
-          dockerfile: .docker/rabbitmq/Dockerfile
+          context: .docker/rabbitmq
+          dockerfile: Dockerfile
         container_name: broker_rabbitmq
         ports:
           - "15672:15672"
