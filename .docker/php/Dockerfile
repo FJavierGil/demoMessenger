@@ -1,4 +1,4 @@
-FROM php:8.2-fpm
+FROM php:8.2-fpm-alpine
 
 RUN apt-get update -yqq \
     && apt-get install -yqq --no-install-recommends vim curl debconf git apt-transport-https apt-utils \
@@ -20,7 +20,7 @@ RUN apt-get --no-install-recommends -y update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get --no-install-recommends -qy install $PHPIZE_DEPS \
-    && pecl install xdebug-3.2.0 \
+    && pecl install xdebug-3.2.2 \
     && docker-php-ext-enable xdebug
 
 RUN pecl install amqp \

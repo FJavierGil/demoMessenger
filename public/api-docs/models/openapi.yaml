@@ -1,7 +1,7 @@
-﻿openapi: 3.0.3
+﻿openapi: 3.1.0
 
 info:
-  title: AOS - Messenger - REST api
+  title: MiW - Messenger - REST api
   description: |
     ## 📬 Ejemplo de servicio asíncrono basado en mensajes _(con el gestor RabbitMQ)_
     Implementación de dos servicios asíncronos que se comunican a través de un gestor de colas de mensajes.
@@ -13,15 +13,15 @@ info:
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
-  version: 1.2.3
+  version: 1.2.4
   contact:
-    name: AOS - Arquitecturas Orientadas a Servicios - UPM
+    name: MiW - UPM
     url: https://miw.etsisi.upm.es/
     email: miw.etsisi@upm.es
 
 servers:
   - url: 'http://localhost:8000/api/v1/'
-    description: 'AOS Production server'
+    description: 'MiW Production server'
 
 tags:
   - name: '📧 NotificationMessages'
@@ -85,7 +85,7 @@ paths:
       operationId: api_messenger_options
       responses:
         '204':
-          description: '`Allow` header &lt;Response body is empty&gt;'
+          description: '`Allow` header _&lt;Response body is empty&gt;_'
           headers:
             Allow:
               description: 'List of HTTP supported methods'

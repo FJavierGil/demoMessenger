@@ -1,4 +1,4 @@
-![logo UPM](https://raw.githubusercontent.com/laracabrera/AOS/master/tarea1/logo_upm.jpg) AOS: Ejemplo de servicios asíncronos
+![logo UPM](https://raw.githubusercontent.com/laracabrera/AOS/master/tarea1/logo_upm.jpg) MiW: Ejemplo de servicios asíncronos
 ======================================
 
 [![Minimum PHP Version](https://img.shields.io/badge/php-%5E8.1-blue.svg)](http://php.net/)
@@ -66,7 +66,7 @@ docker compose up -d
 La primera vez que se generan las imágenes pueden ser algo lenta, debido a la instalación de los
 diferentes componentes requeridos por la aplicación.
 
-Desde la consola del sistema anfitrión se puede ver la lista de los contenedores desplegados empleando:
+Desde la consola del sistema anfitrión se puede obtener la lista de los contenedores desplegados empleando:
 ```docker
 docker ps --format "{{.Names}}: Ports [{{.Ports}}]"
 ``` 
