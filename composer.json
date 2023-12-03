@@ -6,7 +6,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "homepage": "https://miw.etsisi.upm.es/",
-    "keywords": ["Symfony6", "amqp", "RabbitMQ", "symfony-messenger", "OpenAPI"],
+    "keywords": ["Symfony7", "amqp", "RabbitMQ", "symfony-messenger", "OpenAPI"],
     "authors": [
         {
             "name": "MiW UPM",
@@ -24,10 +24,10 @@
         "symfony/amqp-messenger": "*",
         "symfony/console": "*",
         "symfony/dotenv": "*",
-        "symfony/flex": "^2.3",
+        "symfony/flex": "^2.4",
         "symfony/framework-bundle": "*",
         "symfony/messenger": "*",
-        "symfony/monolog-bundle": "^3.8",
+        "symfony/monolog-bundle": "^3.10",
         "symfony/runtime": "*",
         "symfony/yaml": "*"
     },
@@ -75,7 +75,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "6.3.*",
+            "require": "7.0.*",
             "docker": false
         }
     }

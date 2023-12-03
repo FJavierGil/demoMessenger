@@ -126,7 +126,7 @@ class MessageController extends AbstractController
             status: HttpFoundation\Response::HTTP_NO_CONTENT,
             headers: [
                 'Access-Control-Allow-Origin' => '*',
-                'Access-Control-Allow-Methods' => 'OPTIONS, GET, POST',
+                'Access-Control-Allow-Methods' => 'OPTIONS',
                 'Access-Control-Allow-Headers' => 'Content-Type, api_key, Authorization',
                 'Vary' => 'Origin',
                 'Allow' => 'OPTIONS,GET,POST',

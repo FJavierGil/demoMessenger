@@ -1,7 +1,7 @@
 ![logo UPM](https://raw.githubusercontent.com/laracabrera/AOS/master/tarea1/logo_upm.jpg) MiW: Ejemplo de servicios asíncronos
 ======================================
 
-[![Minimum PHP Version](https://img.shields.io/badge/php-%5E8.1-blue.svg)](http://php.net/)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%5E8.2-blue.svg)](http://php.net/)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 > 📬 Ejemplo de servicio asíncrono basado en mensajes _(con el gestor RabbitMQ)_
 
