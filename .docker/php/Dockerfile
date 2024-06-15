@@ -52,6 +52,7 @@ RUN echo "dev ALL=(ALL) ALL" > /etc/sudoers
 WORKDIR /home/wwwroot/
 
 EXPOSE 9000
+EXPOSE 9003
 CMD ["php-fpm"]
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
