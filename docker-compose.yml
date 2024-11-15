@@ -41,6 +41,7 @@ services:
           - rabbitmq
         ports:
           - "9000:9000"
+          - "9003:9003"
 
     rabbitmq:
         build:
