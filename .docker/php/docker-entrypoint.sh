@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+git config --global --add safe.directory /home/wwwroot/aos
 cd /home/wwwroot/aos/
 composer update -n
 chown -hR dev:dev /home/wwwroot/aos/
