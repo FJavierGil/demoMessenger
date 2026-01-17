@@ -1,6 +1,6 @@
-FROM php:8.3-fpm
+FROM php:8.4-fpm
 
-ARG XDEBUG_VERSION=3.4.7
+ARG XDEBUG_VERSION=3.5.0
 
 RUN apt-get update -yqq \
     && apt-get install -yqq --no-install-recommends vim curl debconf git apt-transport-https apt-utils \

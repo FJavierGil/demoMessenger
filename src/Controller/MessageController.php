@@ -7,10 +7,11 @@ use Exception;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Console;
-use Symfony\Component\HttpFoundation;
+use Symfony\Component\HttpFoundation\{JsonResponse, Request, Response};
 use Symfony\Component\HttpKernel\KernelInterface;
+use Symfony\Component\Messenger\Exception\ExceptionInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 /**
  * Class MessageController
@@ -19,36 +20,37 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 #[Route(
     path: MessageController::RUTA_API,
-    name: "api_messenger_"
+    name: 'api_messenger_'
 )]
 class MessageController extends AbstractController
 {
-    public const RUTA_API = '/api/v1/NotificationMessages';
+    public const string RUTA_API = '/api/v1/NotificationMessages';
 
     /**
      * @param MessageBusInterface $bus
-     * @param HttpFoundation\Request $request
+     * @param Request $request
      *
-     * @return HttpFoundation\Response
+     * @return JsonResponse
+     * @throws ExceptionInterface
      */
     #[Route(
-        path: "",
-        name: "producer",
-        methods: [ HttpFoundation\Request::METHOD_POST ]
+        path: '',
+        name: 'producer',
+        methods: [ Request::METHOD_POST ]
     )]
-    public function producer(MessageBusInterface $bus, HttpFoundation\Request $request): HttpFoundation\Response
+    public function producer(MessageBusInterface $bus, Request $request): JsonResponse
     {
         $body = $request->getContent();
         $postData = json_decode($body, true);
 
         if (!isset($postData['users'], $postData['textMessage'])) { // 422
             // 422 - Unprocessable Entity - Faltan datos
-            return new HttpFoundation\JsonResponse(
+            return new JsonResponse(
                 data: [
-                    'code' => HttpFoundation\Response::HTTP_UNPROCESSABLE_ENTITY,
-                    'message' => HttpFoundation\Response::$statusTexts[422]
+                    'code' => Response::HTTP_UNPROCESSABLE_ENTITY,
+                    'message' => Response::$statusTexts[422]
                 ],
-                status: HttpFoundation\Response::HTTP_UNPROCESSABLE_ENTITY
+                status: Response::HTTP_UNPROCESSABLE_ENTITY
             );
         }
 
@@ -58,12 +60,12 @@ class MessageController extends AbstractController
         );
         $bus->dispatch($notificationMessage);
 
-        return new HttpFoundation\JsonResponse(
+        return new JsonResponse(
             data: [
                 'textMessage' => $postData['textMessage'],
                 'users' => $postData['users'],
             ],
-            status: HttpFoundation\Response::HTTP_CREATED,
+            status: Response::HTTP_CREATED,
             headers: [
                 'Location' => $request->getPathInfo(),
                 'Access-Control-Allow-Origin' => '*',
@@ -76,15 +78,15 @@ class MessageController extends AbstractController
     /**
      * @param KernelInterface $kernel
      *
-     * @return HttpFoundation\Response
+     * @return Response
      * @throws Exception
      */
     #[Route(
-        path: "",
-        name: "consumer",
-        methods: [ HttpFoundation\Request::METHOD_GET ]
+        path: '',
+        name: 'consumer',
+        methods: [ Request::METHOD_GET ]
     )]
-    public function consumer(KernelInterface $kernel): HttpFoundation\Response
+    public function consumer(KernelInterface $kernel): Response
     {
         $application = new Application($kernel);
         $application->setAutoExit(true);
@@ -100,9 +102,9 @@ class MessageController extends AbstractController
         $application->run($input, $output);
         $content = $output->fetch();
 
-        return new HttpFoundation\Response(
+        return new Response(
             content: $content,
-            status: HttpFoundation\Response::HTTP_OK,
+            status: Response::HTTP_OK,
             headers: [
                 'Access-Control-Allow-Origin' => '*',
                 'Access-Control-Allow-Methods' => 'GET, OPTIONS',
@@ -112,18 +114,18 @@ class MessageController extends AbstractController
     }
 
     /**
-     * @return HttpFoundation\Response
+     * @return Response
      */
     #[Route(
-        path: "",
-        name: "options",
-        methods: [ HttpFoundation\Request::METHOD_OPTIONS ]
+        path: '',
+        name: 'options',
+        methods: [ Request::METHOD_OPTIONS ]
     )]
-    public function optionsAction(): HttpFoundation\Response
+    public function optionsAction(): Response
     {
 
-        return new HttpFoundation\Response(
-            status: HttpFoundation\Response::HTTP_NO_CONTENT,
+        return new Response(
+            status: Response::HTTP_NO_CONTENT,
             headers: [
                 'Access-Control-Allow-Origin' => '*',
                 'Access-Control-Allow-Methods' => 'OPTIONS',
