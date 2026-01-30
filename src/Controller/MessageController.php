@@ -36,7 +36,7 @@ class MessageController extends AbstractController
     #[Route(
         path: '',
         name: 'producer',
-        methods: [ Request::METHOD_POST ]
+        methods: [ 'PUBLISH' ]
     )]
     public function producer(MessageBusInterface $bus, Request $request): JsonResponse
     {
@@ -69,7 +69,7 @@ class MessageController extends AbstractController
             headers: [
                 'Location' => $request->getPathInfo(),
                 'Access-Control-Allow-Origin' => '*',
-                'Access-Control-Allow-Methods' => 'POST, OPTIONS',
+                'Access-Control-Allow-Methods' => 'PUBLISH, OPTIONS',
                 'Access-Control-Allow-Headers' => 'Content-Type, api_key, Authorization',
             ]
         );
@@ -84,7 +84,7 @@ class MessageController extends AbstractController
     #[Route(
         path: '',
         name: 'consumer',
-        methods: [ Request::METHOD_GET ]
+        methods: [ 'CONSUME' ]
     )]
     public function consumer(KernelInterface $kernel): Response
     {
@@ -107,7 +107,7 @@ class MessageController extends AbstractController
             status: Response::HTTP_OK,
             headers: [
                 'Access-Control-Allow-Origin' => '*',
-                'Access-Control-Allow-Methods' => 'GET, OPTIONS',
+                'Access-Control-Allow-Methods' => 'CONSUME, OPTIONS',
                 'Access-Control-Allow-Headers' => 'Content-Type, api_key, Authorization',
             ]
         );
@@ -131,7 +131,7 @@ class MessageController extends AbstractController
                 'Access-Control-Allow-Methods' => 'OPTIONS',
                 'Access-Control-Allow-Headers' => 'Content-Type, api_key, Authorization',
                 'Vary' => 'Origin',
-                'Allow' => 'OPTIONS,GET,POST',
+                'Allow' => 'OPTIONS, PUBLISH, CONSUME',
             ]
         );
     }

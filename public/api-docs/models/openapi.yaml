@@ -1,4 +1,4 @@
-﻿openapi: 3.1.2
+﻿openapi: 3.2.0
 
 info:
   title: MiW - Messenger - REST api
@@ -13,7 +13,7 @@ info:
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
-  version: 1.2.4
+  version: 1.2.5
   contact:
     name: MiW - UPM
     url: https://miw.etsisi.upm.es/
@@ -29,54 +29,6 @@ tags:
 
 paths:
   /NotificationMessages:
-    post:
-      tags: [ '📧 NotificationMessages' ]
-      summary: Creates a new message
-      description: 'Creates a new notification message and send it to the queue'
-      operationId: api_messenger_producer
-      requestBody:
-        description: '`NotificationMessage` properties to add to the queue'
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NotificationMessage'
-      responses:
-        '201':
-          description: '`CREATED`: message queued'
-          headers:
-            Location:
-              $ref: '#/components/headers/Location'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NotificationMessage'
-        '422':
-          description: '`UNPROCESSABLE ENTITY`: _textMessage_ or _users_ is left out'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Message'
-              examples:
-                responseMessage422:
-                  $ref: '#/components/examples/responseMessage422'
-
-    get:
-      tags: [ '📧 NotificationMessages' ]
-      summary: Consume one message
-      description: 'Consume one message.'
-      operationId: api_messenger_consumer
-      servers:
-        - url: 'http://localhost:8080/api/v1/'
-      responses:
-        '200':
-          description: 'Console ouput'
-          content:
-            application/txt:
-              schema:
-                type: string
-              example: '<console output>'
-
     options:
       tags:
         - '📧 NotificationMessages'
@@ -89,6 +41,55 @@ paths:
           headers:
             Allow:
               $ref: '#/components/headers/Allow'
+
+    additionalOperations:
+      PUBLISH:
+        tags: [ '📧 NotificationMessages' ]
+        summary: Creates a new message
+        description: 'Creates a new notification message and send it to the queue'
+        operationId: api_messenger_producer
+        requestBody:
+          description: '`NotificationMessage` properties to add to the queue'
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationMessage'
+        responses:
+          '201':
+            description: '`CREATED`: message queued'
+            headers:
+              Location:
+                $ref: '#/components/headers/Location'
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/NotificationMessage'
+          '422':
+            description: '`UNPROCESSABLE ENTITY`: _textMessage_ or _users_ is left out'
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Message'
+                examples:
+                  responseMessage422:
+                    $ref: '#/components/examples/responseMessage422'
+
+      CONSUME:
+        tags: [ '📧 NotificationMessages' ]
+        summary: Consume one message
+        description: 'Consume one message.'
+        operationId: api_messenger_consumer
+        servers:
+          - url: 'http://localhost:8080/api/v1/'
+        responses:
+          '200':
+            description: 'Console ouput'
+            content:
+              application/txt:
+                schema:
+                  type: string
+                example: '<console output>'
 
 components:
   schemas:
