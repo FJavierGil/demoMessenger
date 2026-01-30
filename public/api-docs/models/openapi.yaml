@@ -1,4 +1,4 @@
-﻿openapi: 3.1.0
+﻿openapi: 3.1.2
 
 info:
   title: MiW - Messenger - REST api
@@ -8,7 +8,7 @@ info:
     El gestor de mensajes (_message broker_) empleado es [**RabbitMQ**](https://www.rabbitmq.com/), que proporciona un
     sistema  de código abierto para la negociación de mensajes. Por su parte, los servicios utilizan el protocolo
     [*AMQP*](https://www.amqp.org/) para conectarse con el gestor de mensajes.
-    
+
     ![img](/img/diagramaComponentes.svg)
   license:
     name: MIT
@@ -57,9 +57,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Message'
-              example:
-                code: 422
-                message: 'Unprocessable entity: textMessage or users is left out'
+              examples:
+                responseMessage422:
+                  $ref: '#/components/examples/responseMessage422'
 
     get:
       tags: [ '📧 NotificationMessages' ]
@@ -88,9 +88,7 @@ paths:
           description: '`Allow` header _&lt;Response body is empty&gt;_'
           headers:
             Allow:
-              description: 'List of HTTP supported methods'
-              schema:
-                type: string
+              $ref: '#/components/headers/Allow'
 
 components:
   schemas:
@@ -125,10 +123,22 @@ components:
           description: 'Response message'
           type: string
   headers:
+    Allow:
+      description: 'List of HTTP supported methods'
+      schema:
+        type: string
+        example:
+          "Allow: OPTIONS, GET, HEAD, POST"
     Location:
       description: '`URL` location of the newly created message'
       schema:
         type: string
         format: url
         example:
-          /api/v1/NotificationMessages
+          "Location: /api/v1/NotificationMessages"
+  examples:
+    responseMessage422:
+      summary: UNPROCESSABLE ENTITY
+      value:
+        code: 422
+        message: "UNPROCESSABLE ENTITY: textMessage or users is left out"

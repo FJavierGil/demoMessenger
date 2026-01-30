@@ -1,4 +1,4 @@
-FROM php:8.4-fpm
+FROM php:8.5-fpm
 
 ARG XDEBUG_VERSION=3.5.0
 

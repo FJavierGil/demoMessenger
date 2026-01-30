@@ -3,11 +3,11 @@
 
 [![Minimum PHP Version](https://img.shields.io/badge/php-%5E8.3-blue.svg)](http://php.net/)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
-> 📬 Ejemplo de servicio asíncrono basado en mensajes _(con el gestor RabbitMQ)_
+> 📬 Ejemplo de comunicación asíncrona basada en mensajes _(con el gestor RabbitMQ)_
 
-En este ejemplo se implementan dos servicios asíncronos que se comunican a través de un gestor de colas de mensajes.
+En este ejemplo se implementan dos aplicaciones asíncronas que se comunican a través de un gestor de colas de mensajes.
 El gestor de mensajes (_message broker_) empleado es [RabbitMQ][rabbitmq], que proporciona un sistema de negociación
-de mensajes de código abierto. Por su parte, los servicios utilizan el protocolo [AMQP][amqp] para conectarse con 
+de mensajes de código abierto. Por su parte, las aplicaciones utilizan el protocolo [AMQP][amqp] para conectarse con 
 el gestor de mensajes, y además ofrecen una interfaz para poder realizar dos sencillas operaciones:
 - Enviar una notificación a la cola
 - Consumir una notificación de la cola
