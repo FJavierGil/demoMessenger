@@ -43,7 +43,8 @@ class MessageController extends AbstractController
         $body = $request->getContent();
         $postData = json_decode($body, true);
 
-        if (!isset($postData['users'], $postData['textMessage'])) { // 422
+        if (!isset($postData['users'], $postData['textMessage'])
+         || !is_array($postData['users'])) { // 422
             // 422 - Unprocessable Entity - Faltan datos
             return new JsonResponse(
                 data: [
@@ -128,7 +129,7 @@ class MessageController extends AbstractController
             status: Response::HTTP_NO_CONTENT,
             headers: [
                 'Access-Control-Allow-Origin' => '*',
-                'Access-Control-Allow-Methods' => 'OPTIONS',
+                'Access-Control-Allow-Methods' => 'OPTIONS, PUBLISH, CONSUME',
                 'Access-Control-Allow-Headers' => 'Content-Type, api_key, Authorization',
                 'Vary' => 'Origin',
                 'Allow' => 'OPTIONS, PUBLISH, CONSUME',
